@@ -124,15 +124,15 @@ const UZ: Translations = {
   hero: {
     badge: "Farg'ona viloyati, Xonqiz qishlog'i",
     title1: 'Elektr, santexnika,',
-    title2: 'qurilish va dizayn',
+    title2: 'asbob va dizayn',
     title3: '— hammasi bir joyda',
-    desc: "Lyustradan sementgacha, trubadan dizayner chiroqlargacha — Xonqiz Nur biznesingiz va uyingiz uchun ishonchli ta'minot manbai. 5 yo'nalish, 500+ mahsulot turi.",
+    desc: "Lyustradan sementgacha, trubadan dizayner chiroqlargacha — Xonqiz Nur biznesingiz va uyingiz uchun ishonchli ta'minot manbai. 4 yo'nalish, 500+ mahsulot turi.",
     cta: "Biz bilan bog'laning",
     ctaSecondary: "Katalogni ko'rish",
     stats: [
       { value: 2021, suffix: '', label: 'Tashkil etilgan' },
       { value: 500, suffix: '+', label: 'Mahsulot turi' },
-      { value: 5, suffix: '', label: "Yo'nalish" },
+      { value: 4, suffix: '', label: "Yo'nalish" },
     ],
   },
   trust: {
@@ -143,7 +143,7 @@ const UZ: Translations = {
   },
   catalog: {
     title: 'Mahsulot katalogi',
-    subtitle: "5 yo'nalish, 500+ mahsulot turi",
+    subtitle: "4 yo'nalish, 500+ mahsulot turi",
     askCta: "Shu bo'yicha so'rang",
     notFound: 'Kerakli mahsulotni topa olmayapsizmi? Bizga yozing —',
     itemsLabel: 'turkum',
@@ -236,7 +236,7 @@ const UZ: Translations = {
     items: [
       { title: "Optom ta'minot", desc: "Ob'yekt va do'konlar uchun katta hajmda, qulay shartlarda." },
       { title: 'Ishonchli va barqaror', desc: '2021 yildan beri uzluksiz, kafolatli taʻminot.' },
-      { title: 'Keng assortiment', desc: "5 yo'nalish, 500+ mahsulot turi bitta manzilda." },
+      { title: 'Keng assortiment', desc: "4 yo'nalish, 500+ mahsulot turi bitta manzilda." },
       { title: 'Bepul maslahat', desc: 'Tajribali mutaxassislardan texnik yordam va tanlov boʻyicha maslahat.' },
     ],
     inlineCta: "Optom narxlar uchun bog'laning",
@@ -247,7 +247,7 @@ const UZ: Translations = {
     items: [
       { value: 2021, suffix: '', label: 'Tashkil etilgan yil' },
       { value: 500, suffix: '+', label: 'Mahsulot turi' },
-      { value: 5, suffix: '', label: 'Mahsulot yoʻnalishi' },
+      { value: 4, suffix: '', label: 'Mahsulot yoʻnalishi' },
       { value: 100, suffix: '%', label: 'Sifat kafolati' },
     ],
   },
@@ -256,9 +256,9 @@ const UZ: Translations = {
     subtitle: 'Xonqiz Nur — ishonchli hamkoringiz',
     desc1: "2021 yildan buyon Farg'ona viloyati, Xonqiz qishlog'ida elektr va santexnika mahsulotlari sohasida xizmat ko'rsatib kelamiz.",
     desc2: "\"XONQIZ NUR\" xususiy korxonasi sifatida rasmiy ro'yxatdan o'tgan va mahalliy aholi va tadbirkorlarning ishonchli ta'minot manbaiga aylangan.",
-    desc3: "Bugun Xonqiz Nur beshta yo'nalish — elektr, santexnika, qurilish materiallari, asbob-uskunalar va noyob dizaynli chiroqlar bo'yicha 500 dan ortiq mahsulot turini taklif etadi. Mahalliy quruvchilar, pudratchilar va do'konlar uchun ishonchli ulgurji va chakana ta'minotchiga aylandik.",
+    desc3: "Bugun Xonqiz Nur to'rtta yo'nalish — elektr, santexnika, asbob-uskunalar va noyob dizaynli chiroqlar bo'yicha 500 dan ortiq mahsulot turini taklif etadi. Mahalliy quruvchilar, pudratchilar va do'konlar uchun ishonchli ulgurji va chakana ta'minotchiga aylandik.",
     features: [
-      { title: 'Katta assortiment', desc: "500 dan ortiq turdagi mahsulotlar — 5 yo'nalishda" },
+      { title: 'Katta assortiment', desc: "500 dan ortiq turdagi mahsulotlar — 4 yo'nalishda" },
       { title: 'Sifat kafolati', desc: 'Faqat sertifikatli va sifatli tovarlar savdosi' },
       { title: 'Tez xizmat', desc: "Tez va qulay xizmat ko'rsatish" },
     ],
@@ -319,7 +319,7 @@ const UZ: Translations = {
     ],
   },
   footer: {
-    tagline: 'Elektr, santexnika, qurilish va dizayn taʻminoti',
+    tagline: 'Elektr, santexnika, asbob va dizayn taʻminoti',
     rights: 'Barcha huquqlar himoyalangan',
     nav: 'Sahifalar',
     contactTitle: 'Aloqa',
@@ -327,12 +327,12 @@ const UZ: Translations = {
   floating: { call: "Qo'ng'iroq qilish", telegram: 'Telegram orqali yozish' },
   seo: {
     home: {
-      title: "Xonqiz Nur — Elektr, santexnika, qurilish va dizayn mollari | Farg'ona",
-      description: "Xonqiz qishlog'idagi elektr, santexnika, qurilish materiallari, asbob-uskuna va dizayner chiroqlar do'koni. 500+ mahsulot turi. Optom va chakana. Tel +998 99 060 05 24.",
+      title: "Xonqiz Nur — Elektr, santexnika, asbob va dizayn mollari | Farg'ona",
+      description: "Xonqiz qishlog'idagi elektr, santexnika, asbob-uskuna va dizayner chiroqlar do'koni. 500+ mahsulot turi. Optom va chakana. Tel +998 99 060 05 24.",
     },
     catalog: {
-      title: 'Katalog — Elektr, santexnika, qurilish, asbob va chiroqlar | Xonqiz Nur',
-      description: "5 yo'nalish, 500+ mahsulot turi. Optom narxlar uchun bog'laning. Xonqiz Nur, Farg'ona.",
+      title: 'Katalog — Elektr, santexnika, asbob va chiroqlar | Xonqiz Nur',
+      description: "4 yo'nalish, 500+ mahsulot turi. Optom narxlar uchun bog'laning. Xonqiz Nur, Farg'ona.",
     },
     elektr: {
       title: 'Elektr mahsulotlari — lyustra, kabel, avtomat | Xonqiz Nur',
@@ -370,15 +370,15 @@ const RU: Translations = {
   hero: {
     badge: 'Ферганская область, сел. Хонкиз',
     title1: 'Электрика, сантехника,',
-    title2: 'стройка и дизайн',
+    title2: 'инструмент и дизайн',
     title3: '— всё в одном месте',
-    desc: 'От люстры до цемента, от трубы до дизайнерских светильников — Xonqiz Nur надёжный поставщик для вашего бизнеса и дома. 5 направлений, 500+ видов товаров.',
+    desc: 'От люстры до цемента, от трубы до дизайнерских светильников — Xonqiz Nur надёжный поставщик для вашего бизнеса и дома. 4 направления, 500+ видов товаров.',
     cta: 'Связаться с нами',
     ctaSecondary: 'Смотреть каталог',
     stats: [
       { value: 2021, suffix: '', label: 'Основан' },
       { value: 500, suffix: '+', label: 'Видов товаров' },
-      { value: 5, suffix: '', label: 'Направлений' },
+      { value: 4, suffix: '', label: 'Направлений' },
     ],
   },
   trust: {
@@ -389,7 +389,7 @@ const RU: Translations = {
   },
   catalog: {
     title: 'Каталог товаров',
-    subtitle: '5 направлений, 500+ видов товаров',
+    subtitle: '4 направления, 500+ видов товаров',
     askCta: 'Спросить по этому',
     notFound: 'Не нашли нужный товар? Напишите нам —',
     itemsLabel: 'групп',
@@ -482,7 +482,7 @@ const RU: Translations = {
     items: [
       { title: 'Оптовые поставки', desc: 'Большие объёмы на удобных условиях для объектов и магазинов.' },
       { title: 'Надёжно и стабильно', desc: 'Бесперебойные поставки с гарантией с 2021 года.' },
-      { title: 'Широкий ассортимент', desc: '5 направлений, 500+ видов товаров в одном месте.' },
+      { title: 'Широкий ассортимент', desc: '4 направления, 500+ видов товаров в одном месте.' },
       { title: 'Бесплатная консультация', desc: 'Техпомощь и советы по выбору от опытных специалистов.' },
     ],
     inlineCta: 'Узнать оптовые цены',
@@ -493,7 +493,7 @@ const RU: Translations = {
     items: [
       { value: 2021, suffix: '', label: 'Год основания' },
       { value: 500, suffix: '+', label: 'Видов товаров' },
-      { value: 5, suffix: '', label: 'Направлений' },
+      { value: 4, suffix: '', label: 'Направлений' },
       { value: 100, suffix: '%', label: 'Гарантия качества' },
     ],
   },
@@ -502,9 +502,9 @@ const RU: Translations = {
     subtitle: 'Xonqiz Nur — ваш надёжный партнёр',
     desc1: 'С 2021 года предоставляем услуги в сфере электро- и сантехнических товаров в Ферганской области, сел. Хонкиз.',
     desc2: 'ЧП «XONQIZ NUR» официально зарегистрировано и стало надёжным источником снабжения для местных жителей и предпринимателей.',
-    desc3: 'Сегодня Xonqiz Nur предлагает более 500 видов товаров по пяти направлениям — электрика, сантехника, стройматериалы, инструменты и дизайнерские светильники. Мы стали надёжным оптовым и розничным поставщиком для строителей, подрядчиков и магазинов.',
+    desc3: 'Сегодня Xonqiz Nur предлагает более 500 видов товаров по четырём направлениям — электрика, сантехника, инструменты и дизайнерские светильники. Мы стали надёжным оптовым и розничным поставщиком для строителей, подрядчиков и магазинов.',
     features: [
-      { title: 'Большой ассортимент', desc: 'Более 500 видов товаров — в 5 направлениях' },
+      { title: 'Большой ассортимент', desc: 'Более 500 видов товаров — в 4 направлениях' },
       { title: 'Гарантия качества', desc: 'Только сертифицированные и качественные товары' },
       { title: 'Быстрое обслуживание', desc: 'Быстрый и удобный сервис' },
     ],
@@ -565,7 +565,7 @@ const RU: Translations = {
     ],
   },
   footer: {
-    tagline: 'Электрика, сантехника, стройка и дизайн',
+    tagline: 'Электрика, сантехника, инструмент и дизайн',
     rights: 'Все права защищены',
     nav: 'Страницы',
     contactTitle: 'Контакты',
@@ -573,12 +573,12 @@ const RU: Translations = {
   floating: { call: 'Позвонить', telegram: 'Написать в Telegram' },
   seo: {
     home: {
-      title: 'Xonqiz Nur — электрика, сантехника, стройматериалы и дизайн | Фергана',
-      description: 'Магазин электрики, сантехники, стройматериалов, инструмента и дизайнерских светильников в сел. Хонкиз. 500+ видов товаров. Опт и розница. Тел +998 99 060 05 24.',
+      title: 'Xonqiz Nur — электрика, сантехника, инструмент и дизайн | Фергана',
+      description: 'Магазин электрики, сантехники, инструмента и дизайнерских светильников в сел. Хонкиз. 500+ видов товаров. Опт и розница. Тел +998 99 060 05 24.',
     },
     catalog: {
-      title: 'Каталог — электрика, сантехника, стройка, инструмент и свет | Xonqiz Nur',
-      description: '5 направлений, 500+ видов товаров. Свяжитесь для оптовых цен. Xonqiz Nur, Фергана.',
+      title: 'Каталог — электрика, сантехника, инструмент и свет | Xonqiz Nur',
+      description: '4 направления, 500+ видов товаров. Свяжитесь для оптовых цен. Xonqiz Nur, Фергана.',
     },
     elektr: {
       title: 'Электротовары — люстры, кабель, автоматы | Xonqiz Nur',
@@ -616,15 +616,15 @@ const EN: Translations = {
   hero: {
     badge: 'Fergana Region, Xonqiz Village',
     title1: 'Electrical, plumbing,',
-    title2: 'construction & design',
+    title2: 'tools & design',
     title3: '— all in one place',
-    desc: 'From chandeliers to cement, from pipes to designer lighting — Xonqiz Nur is your reliable supplier for business and home. 5 worlds, 500+ product types.',
+    desc: 'From chandeliers to cement, from pipes to designer lighting — Xonqiz Nur is your reliable supplier for business and home. 4 worlds, 500+ product types.',
     cta: 'Contact Us',
     ctaSecondary: 'View Catalog',
     stats: [
       { value: 2021, suffix: '', label: 'Founded' },
       { value: 500, suffix: '+', label: 'Product types' },
-      { value: 5, suffix: '', label: 'Worlds' },
+      { value: 4, suffix: '', label: 'Worlds' },
     ],
   },
   trust: {
@@ -635,7 +635,7 @@ const EN: Translations = {
   },
   catalog: {
     title: 'Product Catalog',
-    subtitle: '5 worlds, 500+ product types',
+    subtitle: '4 worlds, 500+ product types',
     askCta: 'Ask about this',
     notFound: "Can't find what you need? Message us —",
     itemsLabel: 'groups',
@@ -728,7 +728,7 @@ const EN: Translations = {
     items: [
       { title: 'Bulk supply', desc: 'Large volumes on convenient terms for sites and shops.' },
       { title: 'Reliable & stable', desc: 'Uninterrupted, guaranteed supply since 2021.' },
-      { title: 'Wide assortment', desc: '5 worlds, 500+ product types in one place.' },
+      { title: 'Wide assortment', desc: '4 worlds, 500+ product types in one place.' },
       { title: 'Free expert advice', desc: 'Technical help and selection advice from experienced specialists.' },
     ],
     inlineCta: 'Ask about bulk pricing',
@@ -739,7 +739,7 @@ const EN: Translations = {
     items: [
       { value: 2021, suffix: '', label: 'Founded' },
       { value: 500, suffix: '+', label: 'Product types' },
-      { value: 5, suffix: '', label: 'Worlds' },
+      { value: 4, suffix: '', label: 'Worlds' },
       { value: 100, suffix: '%', label: 'Quality assured' },
     ],
   },
@@ -748,9 +748,9 @@ const EN: Translations = {
     subtitle: 'Xonqiz Nur — your trusted partner',
     desc1: 'Since 2021, we have been serving the Fergana region in Xonqiz village with electrical and plumbing products.',
     desc2: 'Officially registered as "XONQIZ NUR" private enterprise, we have become a reliable supply source for local residents and entrepreneurs.',
-    desc3: 'Today Xonqiz Nur offers over 500 product types across five worlds — electrical, plumbing, construction materials, tools and designer lighting. We have become a reliable wholesale and retail supplier for builders, contractors and shops.',
+    desc3: 'Today Xonqiz Nur offers over 500 product types across four worlds — electrical, plumbing, tools and designer lighting. We have become a reliable wholesale and retail supplier for builders, contractors and shops.',
     features: [
-      { title: 'Large selection', desc: 'Over 500 product types — across 5 worlds' },
+      { title: 'Large selection', desc: 'Over 500 product types — across 4 worlds' },
       { title: 'Quality assured', desc: 'Only certified and quality-tested goods' },
       { title: 'Fast service', desc: 'Quick and convenient customer service' },
     ],
@@ -811,7 +811,7 @@ const EN: Translations = {
     ],
   },
   footer: {
-    tagline: 'Electrical, plumbing, construction & design supplies',
+    tagline: 'Electrical, plumbing, tools & design supplies',
     rights: 'All rights reserved',
     nav: 'Pages',
     contactTitle: 'Contact',
@@ -819,12 +819,12 @@ const EN: Translations = {
   floating: { call: 'Call', telegram: 'Message on Telegram' },
   seo: {
     home: {
-      title: 'Xonqiz Nur — Electrical, Plumbing & Construction Supplies | Fergana',
-      description: 'Store for electrical, plumbing, construction materials, tools and designer lighting in Xonqiz village. 500+ product types. Wholesale & retail. Tel +998 99 060 05 24.',
+      title: 'Xonqiz Nur — Electrical, Plumbing & Tools Supplies | Fergana',
+      description: 'Store for electrical, plumbing, tools and designer lighting in Xonqiz village. 500+ product types. Wholesale & retail. Tel +998 99 060 05 24.',
     },
     catalog: {
-      title: 'Catalog — Electrical, Plumbing, Construction, Tools & Lighting | Xonqiz Nur',
-      description: '5 worlds, 500+ product types. Contact us for bulk pricing. Xonqiz Nur, Fergana.',
+      title: 'Catalog — Electrical, Plumbing, Tools & Lighting | Xonqiz Nur',
+      description: '4 worlds, 500+ product types. Contact us for bulk pricing. Xonqiz Nur, Fergana.',
     },
     elektr: {
       title: 'Electrical products — chandeliers, cable, breakers | Xonqiz Nur',
