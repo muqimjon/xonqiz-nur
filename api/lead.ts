@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 interface VercelRequest {
   method?: string;
   body?: unknown;
