@@ -110,6 +110,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                 [src]="mapSrc"
                 width="100%"
                 height="100%"
+                loading="lazy"
                 frameborder="0"
                 allowfullscreen="true"
                 style="border-radius:18px;border:none;display:block;"
