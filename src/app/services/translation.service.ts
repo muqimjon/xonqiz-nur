@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 export type Lang = 'uz' | 'ru' | 'en';
 
@@ -125,6 +126,7 @@ const EN: Translations = {
 
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
+  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private _lang = signal<Lang>('uz');
   lang = this._lang.asReadonly();
 
@@ -136,11 +138,12 @@ export class TranslationService {
 
   setLang(lang: Lang) {
     this._lang.set(lang);
-    localStorage.setItem('xn-lang', lang);
+    if (this.isBrowser) localStorage.setItem('xn-lang', lang);
   }
 
   init() {
+    if (!this.isBrowser) return;
     const saved = localStorage.getItem('xn-lang') as Lang | null;
-    if (saved && ['uz','ru','en'].includes(saved)) this._lang.set(saved);
+    if (saved && ['uz', 'ru', 'en'].includes(saved)) this._lang.set(saved);
   }
 }

@@ -1,5 +1,4 @@
-import { Component, inject, OnInit, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, afterNextRender } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { ProductsComponent } from './components/products/products.component';
@@ -14,7 +13,6 @@ import { ThemeService } from './services/theme.service';
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
     NavbarComponent,
     HeroComponent,
     ProductsComponent,
@@ -40,7 +38,6 @@ import { ThemeService } from './services/theme.service';
       <app-footer />
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .app-root {
@@ -54,31 +51,22 @@ import { ThemeService } from './services/theme.service';
     `,
   ],
 })
-export class App implements OnInit, AfterViewInit {
+export class App {
   private ts = inject(TranslationService);
   private theme = inject(ThemeService);
 
-  ngOnInit() {
+  constructor() {
     this.ts.init();
     this.theme.init();
-  }
-
-  ngAfterViewInit() {
-    this.initScrollObserver();
-  }
-
-  private initScrollObserver() {
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        }),
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
-    );
-    setTimeout(() => {
+    afterNextRender(() => {
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          }),
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
+      );
       document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
-    }, 100);
+    });
   }
 }
