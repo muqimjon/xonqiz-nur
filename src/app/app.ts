@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, AfterViewInit } from '@angular/core';
+import { Component, inject, OnInit, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroComponent } from './components/hero/hero.component';
@@ -21,29 +21,38 @@ import { ThemeService } from './services/theme.service';
     AboutComponent,
     MapComponent,
     ContactComponent,
-    FooterComponent
+    FooterComponent,
   ],
   template: `
     <div class="app-root">
-      <app-navbar/>
+      <app-navbar />
       <main>
-        <app-hero/>
+        <app-hero />
         <div class="divider"></div>
-        <app-products/>
+        <app-products />
         <div class="divider"></div>
-        <app-about/>
+        <app-about />
         <div class="divider"></div>
-        <app-map/>
+        <app-map />
         <div class="divider"></div>
-        <app-contact/>
+        <app-contact />
       </main>
-      <app-footer/>
+      <app-footer />
     </div>
   `,
-  styles: [`
-    .app-root { min-height: 100vh; display: flex; flex-direction: column; }
-    main { flex: 1; }
-  `]
+  changeDetection: ChangeDetectionStrategy.Eager,
+  styles: [
+    `
+      .app-root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      main {
+        flex: 1;
+      }
+    `,
+  ],
 })
 export class App implements OnInit, AfterViewInit {
   private ts = inject(TranslationService);
@@ -60,15 +69,16 @@ export class App implements OnInit, AfterViewInit {
 
   private initScrollObserver() {
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      }),
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
     );
     setTimeout(() => {
-      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
     }, 100);
   }
 }
