@@ -1,349 +1,331 @@
-import { Component, inject, HostListener, signal, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, inject, signal, afterNextRender } from '@angular/core';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { TranslationService, Lang } from '../../services/translation.service';
 import { ThemeService } from '../../services/theme.service';
+import { LogoComponent } from '../../shared/logo.component';
+import { WorldIconComponent } from '../../shared/world-icon.component';
+import { WORLDS } from '../../shared/catalog.config';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, RouterLinkActive, LogoComponent, WorldIconComponent],
   template: `
-    <nav class="navbar" [class.scrolled]="scrolled()">
-      <div class="nav-inner">
-        <!-- Logo -->
-        <a href="#home" class="nav-logo">
-          <div class="logo-icon">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <!-- Bolt + Drop combined mark -->
-              <rect width="36" height="36" rx="10" fill="currentColor" class="logo-bg" />
-              <!-- Lightning bolt -->
-              <path d="M20 5L10 20H18L16 31L26 16H18L20 5Z" fill="#f5a623" />
-              <!-- Water drop hint -->
-              <circle cx="11" cy="27" r="2.5" fill="#4fc3f7" opacity="0.8" />
-            </svg>
-          </div>
-          <div class="logo-text">
-            <span class="logo-main">XONQIZ</span>
-            <span class="logo-sub">NUR</span>
-          </div>
+    <header class="nav" [class.scrolled]="scrolled()">
+      <div class="nav-inner liquid-glass lg-nav lg-refract">
+        <a class="brand" [routerLink]="['/', lang()]" (click)="close()">
+          <app-logo [size]="38" />
+          <span class="brand-text">
+            <span class="brand-main">XONQIZ</span>
+            <span class="brand-sub">NUR</span>
+          </span>
         </a>
 
-        <!-- Desktop Nav Links -->
-        <ul class="nav-links">
-          <li>
-            <a href="#home" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.home }}</a>
-          </li>
-          <li>
-            <a href="#products" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.products }}</a>
-          </li>
-          <li>
-            <a href="#about" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.about }}</a>
-          </li>
-          <li>
-            <a href="#location" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.location }}</a>
-          </li>
-          <li>
-            <a href="#contact" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.contact }}</a>
-          </li>
-        </ul>
+        <nav class="links" aria-label="Asosiy menyu">
+          <a [routerLink]="['/', lang()]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            {{ t().nav.home }}
+          </a>
+          <div class="has-panel">
+            <a [routerLink]="['/', lang(), 'katalog']" routerLinkActive="active">{{ t().nav.catalog }}</a>
+            <div class="panel liquid-glass">
+              @for (w of worlds; track w.id) {
+                <a class="panel-item" [routerLink]="['/', lang(), 'katalog', w.slug]" [attr.data-accent]="w.accent">
+                  <span class="pi-icon"><app-world-icon [world]="w.id" [size]="22" /></span>
+                  <span>
+                    <span class="pi-name">{{ t().catalog.worlds[w.id].name }}</span>
+                    <span class="pi-blurb">{{ t().catalog.worlds[w.id].blurb }}</span>
+                  </span>
+                </a>
+              }
+            </div>
+          </div>
+          <a [routerLink]="['/', lang(), 'biz-haqimizda']" routerLinkActive="active">{{ t().nav.about }}</a>
+          <a [routerLink]="['/', lang(), 'aloqa']" routerLinkActive="active">{{ t().nav.contact }}</a>
+        </nav>
 
-        <!-- Controls -->
-        <div class="nav-controls">
-          <!-- Language switcher -->
-          <div class="lang-switcher">
-            @for (l of langs; track l) {
-              <button class="lang-btn" [class.active]="ts.lang() === l" (click)="ts.setLang(l)">
-                {{ l.toUpperCase() }}
-              </button>
+        <div class="controls">
+          <div class="langs">
+            @for (l of langList; track l) {
+              <button [class.on]="lang() === l" (click)="switchLang(l)" [attr.aria-label]="'Til: ' + l">{{ l }}</button>
             }
           </div>
-
-          <!-- Theme toggle -->
-          <button
-            class="theme-btn"
-            (click)="theme.toggle()"
-            [title]="theme.isDark() ? 'Light mode' : 'Dark mode'"
-          >
+          <button class="icon-btn" (click)="theme.toggle()" aria-label="Mavzu">
             @if (theme.isDark()) {
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
               </svg>
             } @else {
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z" />
               </svg>
             }
           </button>
-
-          <!-- Hamburger -->
-          <button class="hamburger" (click)="menuOpen.set(!menuOpen())" [class.open]="menuOpen()">
+          <button class="icon-btn burger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()" aria-label="Menyu">
             <span></span><span></span><span></span>
           </button>
         </div>
       </div>
 
-      <!-- Mobile Menu -->
       @if (menuOpen()) {
-        <div class="mobile-menu">
-          <ul>
-            <li>
-              <a href="#home" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.home }}</a>
-            </li>
-            <li>
-              <a href="#products" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.products }}</a>
-            </li>
-            <li>
-              <a href="#about" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.about }}</a>
-            </li>
-            <li>
-              <a href="#location" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.location }}</a>
-            </li>
-            <li>
-              <a href="#contact" class="nav-link" (click)="closeMenu()">{{ ts.t.nav.contact }}</a>
-            </li>
-          </ul>
+        <div class="mobile liquid-glass lg-modal">
+          <a [routerLink]="['/', lang()]" (click)="close()">{{ t().nav.home }}</a>
+          <a [routerLink]="['/', lang(), 'katalog']" (click)="close()">{{ t().nav.catalog }}</a>
+          @for (w of worlds; track w.id) {
+            <a class="m-sub" [routerLink]="['/', lang(), 'katalog', w.slug]" (click)="close()">
+              <app-world-icon [world]="w.id" [size]="18" /> {{ t().catalog.worlds[w.id].name }}
+            </a>
+          }
+          <a [routerLink]="['/', lang(), 'biz-haqimizda']" (click)="close()">{{ t().nav.about }}</a>
+          <a [routerLink]="['/', lang(), 'aloqa']" (click)="close()">{{ t().nav.contact }}</a>
         </div>
       }
-    </nav>
+    </header>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
-      .navbar {
+      .nav {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1000;
-        padding: 16px 0;
-        transition: all 0.4s ease;
+        z-index: 100;
+        padding: 14px 16px;
+        transition: padding var(--dur) var(--ease-glass);
       }
-      .navbar.scrolled {
-        background: var(--color-glass);
-        backdrop-filter: blur(24px) saturate(180%);
-        -webkit-backdrop-filter: blur(24px) saturate(180%);
-        border-bottom: 1px solid var(--color-glass-border);
-        padding: 10px 0;
-        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+      .nav.scrolled {
+        padding: 8px 16px;
       }
       .nav-inner {
-        max-width: 1200px;
+        max-width: 1240px;
         margin: 0 auto;
-        padding: 0 24px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 20px;
+        padding: 10px 18px;
+        border-radius: var(--r-lg);
+        transition:
+          box-shadow var(--dur) var(--ease-glass),
+          background var(--dur) var(--ease-glass);
       }
-      .nav-logo {
+      .nav:not(.scrolled) .nav-inner {
+        background: transparent;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        border-color: transparent;
+        box-shadow: none;
+      }
+      .brand {
         display: flex;
         align-items: center;
         gap: 10px;
         text-decoration: none;
-        transition: transform 0.3s ease;
       }
-      .nav-logo:hover {
-        transform: scale(1.03);
-      }
-      .logo-icon {
-        flex-shrink: 0;
-      }
-      .logo-bg {
-        fill: rgba(245, 166, 35, 0.12);
-      }
-      .logo-text {
+      .brand-text {
         display: flex;
         flex-direction: column;
         line-height: 1;
       }
-      .logo-main {
-        font-size: 1rem;
+      .brand-main {
         font-weight: 900;
+        letter-spacing: 0.08em;
         color: var(--color-text);
-        letter-spacing: 0.06em;
+        font-size: 1rem;
       }
-      .logo-sub {
-        font-size: 0.65rem;
+      .brand-sub {
+        font-size: 0.62rem;
         font-weight: 700;
+        letter-spacing: 0.32em;
         color: var(--color-accent);
-        letter-spacing: 0.15em;
       }
-
-      .nav-links {
+      .links {
         display: flex;
         align-items: center;
         gap: 4px;
-        list-style: none;
       }
-      .nav-link {
-        display: block;
+      .links > a,
+      .has-panel > a {
         padding: 8px 14px;
-        border-radius: 10px;
-        text-decoration: none;
+        border-radius: var(--r-pill);
         color: var(--color-text-muted);
-        font-size: 0.88rem;
-        font-weight: 500;
-        transition: all 0.25s ease;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition:
+          color var(--dur),
+          background var(--dur);
+        white-space: nowrap;
       }
-      .nav-link:hover {
+      .links a:hover,
+      .has-panel:hover > a {
         color: var(--color-text);
         background: var(--color-surface);
       }
-
-      .nav-controls {
+      .links a.active {
+        color: var(--color-accent);
+      }
+      .has-panel {
+        position: relative;
+      }
+      .panel {
+        position: absolute;
+        top: calc(100% + 14px);
+        left: 50%;
+        transform: translateX(-50%) translateY(8px);
+        width: 380px;
+        padding: 10px;
+        display: grid;
+        gap: 4px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--dur) var(--ease-glass);
+        border-radius: var(--r-lg);
+      }
+      .has-panel:hover .panel,
+      .has-panel:focus-within .panel {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+      .panel-item {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: var(--r-md);
+        text-decoration: none;
+        transition: background var(--dur);
+      }
+      .panel-item:hover {
+        background: var(--color-surface);
+      }
+      .pi-icon {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--r-md);
+        flex: none;
+        color: var(--color-accent);
+        background: rgba(245, 166, 35, 0.1);
+      }
+      .panel-item[data-accent='electric'] .pi-icon {
+        color: var(--color-electric);
+        background: rgba(79, 195, 247, 0.1);
+      }
+      .panel-item[data-accent='glow'] .pi-icon {
+        color: var(--color-accent-hi);
+        background: rgba(255, 209, 102, 0.12);
+      }
+      .pi-name {
+        display: block;
+        color: var(--color-text);
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+      .pi-blurb {
+        display: block;
+        color: var(--color-text-muted);
+        font-size: 0.76rem;
+        margin-top: 2px;
+      }
+      .controls {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
       }
-
-      .lang-switcher {
+      .langs {
         display: flex;
         gap: 2px;
-        background: var(--color-surface);
-        border-radius: 10px;
         padding: 3px;
+        border-radius: var(--r-pill);
+        background: var(--color-surface);
       }
-      .lang-btn {
-        padding: 5px 10px;
-        border-radius: 7px;
+      .langs button {
         border: none;
         background: transparent;
         color: var(--color-text-muted);
-        font-size: 0.72rem;
         font-weight: 700;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        padding: 5px 9px;
+        border-radius: var(--r-pill);
         cursor: pointer;
-        transition: all 0.2s ease;
-        font-family: 'Onest', sans-serif;
-        letter-spacing: 0.04em;
+        transition: all var(--dur);
       }
-      .lang-btn.active {
-        background: var(--color-accent);
-        color: #000;
+      .langs button.on {
+        background: var(--grad-brand);
+        color: #07070c;
       }
-      .lang-btn:hover:not(.active) {
-        background: var(--color-surface-hover);
-        color: var(--color-text);
-      }
-
-      .theme-btn {
-        width: 38px;
-        height: 38px;
-        border-radius: 10px;
+      .icon-btn {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--r-md);
         border: 1px solid var(--color-border);
         background: var(--color-surface);
-        color: var(--color-text-muted);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        color: var(--color-text);
         cursor: pointer;
-        transition: all 0.25s ease;
+        transition: all var(--dur);
       }
-      .theme-btn:hover {
-        color: var(--color-accent);
+      .icon-btn:hover {
         border-color: var(--color-accent);
-        background: var(--color-glow);
+        color: var(--color-accent);
       }
-
-      .hamburger {
+      .burger {
         display: none;
         flex-direction: column;
-        gap: 5px;
-        width: 38px;
-        height: 38px;
-        border-radius: 10px;
-        border: 1px solid var(--color-border);
-        background: var(--color-surface);
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        padding: 8px;
+        gap: 4px;
       }
-      .hamburger span {
-        display: block;
+      .burger span {
         width: 18px;
         height: 2px;
-        background: var(--color-text-muted);
+        background: currentColor;
         border-radius: 2px;
-        transition: all 0.3s ease;
-        transform-origin: center;
+        transition: all var(--dur);
       }
-      .hamburger.open span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-      }
-      .hamburger.open span:nth-child(2) {
-        opacity: 0;
-        transform: scaleX(0);
-      }
-      .hamburger.open span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-      }
-
-      .mobile-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--color-glass);
-        backdrop-filter: blur(24px);
-        border-bottom: 1px solid var(--color-glass-border);
-        padding: 12px 24px 20px;
-        animation: slide-down 0.3s ease;
-      }
-      @keyframes slide-down {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .mobile-menu ul {
-        list-style: none;
+      .mobile {
+        max-width: 1240px;
+        margin: 10px auto 0;
+        padding: 14px;
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 4px;
+        border-radius: var(--r-lg);
+        animation: slide-in var(--dur) var(--ease-out-expo);
       }
-      .mobile-menu .nav-link {
-        font-size: 1rem;
-        padding: 12px 16px;
+      .mobile a {
+        padding: 11px 14px;
+        border-radius: var(--r-md);
+        color: var(--color-text);
+        text-decoration: none;
+        font-weight: 600;
       }
-
-      @media (max-width: 768px) {
-        .nav-links {
+      .mobile a:hover {
+        background: var(--color-surface);
+      }
+      .mobile .m-sub {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 26px;
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+      }
+      @media (max-width: 900px) {
+        .links {
           display: none;
         }
-        .hamburger {
+        .burger {
           display: flex;
         }
       }
-      @media (max-width: 480px) {
-        .lang-switcher .lang-btn {
-          padding: 5px 7px;
-          font-size: 0.68rem;
+      @media (max-width: 560px) {
+        .langs {
+          display: none;
         }
       }
     `,
@@ -352,16 +334,34 @@ import { ThemeService } from '../../services/theme.service';
 export class NavbarComponent {
   ts = inject(TranslationService);
   theme = inject(ThemeService);
+  private router = inject(Router);
   scrolled = signal(false);
   menuOpen = signal(false);
-  langs: Lang[] = ['uz', 'ru', 'en'];
+  worlds = WORLDS;
+  langList: Lang[] = ['uz', 'ru', 'en'];
 
-  @HostListener('window:scroll')
-  onScroll() {
-    this.scrolled.set(window.scrollY > 40);
+  lang = this.ts.lang;
+  t = () => this.ts.t;
+
+  constructor() {
+    afterNextRender(() => {
+      const onScroll = () => this.scrolled.set(window.scrollY > 30);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    });
   }
 
-  closeMenu() {
+  toggleMenu() {
+    this.menuOpen.update((v) => !v);
+  }
+  close() {
     this.menuOpen.set(false);
+  }
+  switchLang(l: Lang) {
+    this.ts.setLang(l);
+    const segs = this.router.url.split('?')[0].split('/').filter(Boolean);
+    segs[0] = l;
+    this.router.navigate(['/', ...segs]);
+    this.close();
   }
 }

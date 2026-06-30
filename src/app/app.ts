@@ -1,49 +1,29 @@
-import { Component, inject, afterNextRender } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { FilterDefsComponent } from './shared/filter-defs.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HeroComponent } from './components/hero/hero.component';
-import { ProductsComponent } from './components/products/products.component';
-import { AboutComponent } from './components/about/about.component';
-import { MapComponent } from './components/map/map.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { TranslationService } from './services/translation.service';
+import { FloatingContactComponent } from './components/floating-contact/floating-contact.component';
 import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    NavbarComponent,
-    HeroComponent,
-    ProductsComponent,
-    AboutComponent,
-    MapComponent,
-    ContactComponent,
-    FooterComponent,
-  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterOutlet, FilterDefsComponent, NavbarComponent, FooterComponent, FloatingContactComponent],
   template: `
-    <div class="app-root">
-      <app-navbar />
-      <main>
-        <app-hero />
-        <div class="divider"></div>
-        <app-products />
-        <div class="divider"></div>
-        <app-about />
-        <div class="divider"></div>
-        <app-map />
-        <div class="divider"></div>
-        <app-contact />
-      </main>
-      <app-footer />
-    </div>
+    <app-filter-defs />
+    <app-navbar />
+    <main><router-outlet /></main>
+    <app-floating-contact />
+    <app-footer />
   `,
   styles: [
     `
-      .app-root {
-        min-height: 100vh;
+      :host {
         display: flex;
         flex-direction: column;
+        min-height: 100vh;
       }
       main {
         flex: 1;
@@ -52,21 +32,8 @@ import { ThemeService } from './services/theme.service';
   ],
 })
 export class App {
-  private ts = inject(TranslationService);
   private theme = inject(ThemeService);
-
   constructor() {
-    this.ts.init();
     this.theme.init();
-    afterNextRender(() => {
-      const observer = new IntersectionObserver(
-        (entries) =>
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-          }),
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
-      );
-      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
-    });
   }
 }

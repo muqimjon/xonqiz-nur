@@ -1,332 +1,296 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, inject, signal, input, effect } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
+import { InquiryService } from '../../services/inquiry.service';
+import { WORLDS } from '../../shared/catalog.config';
+import { RevealDirective } from '../../shared/reveal.directive';
+import { RippleDirective } from '../../shared/ripple.directive';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RevealDirective, RippleDirective],
   template: `
-    <section id="contact" class="section-padding contact-section">
+    <section class="section-padding" id="contact">
       <div class="container">
-        <!-- Header -->
-        <div class="section-header fade-up">
-          <div class="badge">
-            <svg width="8" height="8" viewBox="0 0 8 8">
-              <circle cx="4" cy="4" r="4" fill="currentColor" />
-            </svg>
-            {{ ts.t.contact.subtitle }}
-          </div>
-          <h2 class="section-title">{{ ts.t.contact.title }}</h2>
-        </div>
+        <header class="head" appReveal>
+          <span class="badge">{{ t().contact.title }}</span>
+          <h2>{{ t().contact.subtitle }}</h2>
+        </header>
 
-        <div class="contact-grid">
-          <!-- Phone 1 -->
-          <a href="tel:+998990600524" class="contact-card glass-card">
-            <div class="cc-icon phone-icon">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.17h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                />
-              </svg>
-            </div>
-            <div class="cc-content">
-              <span class="cc-label">{{ ts.t.contact.phone }} 1</span>
-              <span class="cc-val">+998 99 060 05 24</span>
-            </div>
-            <div class="cc-arrow">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </div>
-          </a>
-
-          <!-- Phone 2 -->
-          <a href="tel:+998935137890" class="contact-card glass-card">
-            <div class="cc-icon phone-icon">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.17h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                />
-              </svg>
-            </div>
-            <div class="cc-content">
-              <span class="cc-label">{{ ts.t.contact.phone }} 2</span>
-              <span class="cc-val">+998 93 513 78 90</span>
-            </div>
-            <div class="cc-arrow">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </div>
-          </a>
-
-          <!-- Telegram -->
-          <a
-            href="https://t.me/xonqiznur"
-            target="_blank"
-            rel="noopener"
-            class="contact-card glass-card"
-          >
-            <div class="cc-icon tg-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"
-                />
-              </svg>
-            </div>
-            <div class="cc-content">
-              <span class="cc-label">{{ ts.t.contact.telegram }}</span>
-              <span class="cc-val">&#64;xonqiznur</span>
-            </div>
-            <div class="cc-arrow">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </div>
-          </a>
-
-          <!-- Email -->
-          <a href="mailto:raximov1990@umail.uz" class="contact-card glass-card">
-            <div class="cc-icon email-icon">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <path
-                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-            </div>
-            <div class="cc-content">
-              <span class="cc-label">{{ ts.t.contact.email }}</span>
-              <span class="cc-val">raximov1990&#64;umail.uz</span>
-            </div>
-            <div class="cc-arrow">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </div>
-          </a>
-
-          <!-- Address (full width) -->
-          <div class="contact-card address-card glass-card">
-            <div class="cc-icon addr-icon">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <path
-                  d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"
-                />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-            </div>
-            <div class="cc-content">
-              <span class="cc-label">{{ ts.t.contact.address }}</span>
-              <span class="cc-val">{{ ts.t.contact.addressVal }}</span>
+        <div class="grid">
+          <div class="cards" appReveal>
+            <a class="card liquid-glass" href="tel:+998990600524">
+              <span class="ic green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h3l2 5-2 1.5a11 11 0 0 0 5 5L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+              </span>
+              <span><small>{{ t().contact.phone }}</small><b>+998 99 060 05 24</b></span>
+            </a>
+            <a class="card liquid-glass" href="tel:+998935137890">
+              <span class="ic green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h3l2 5-2 1.5a11 11 0 0 0 5 5L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+              </span>
+              <span><small>{{ t().contact.phone }}</small><b>+998 93 513 78 90</b></span>
+            </a>
+            <a class="card liquid-glass" href="https://t.me/xonqiznur" target="_blank" rel="noopener">
+              <span class="ic blue">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.7 19c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.2 13 1.4 11.5c-1-.3-1-1 .2-1.5l19-7.3c.9-.3 1.6.2 1.3 1.6Z"/></svg>
+              </span>
+              <span><small>{{ t().contact.telegram }}</small><b>&#64;xonqiznur</b></span>
+            </a>
+            <a class="card liquid-glass" href="mailto:raximov1990@umail.uz">
+              <span class="ic amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              </span>
+              <span><small>{{ t().contact.email }}</small><b>raximov1990&#64;umail.uz</b></span>
+            </a>
+            <div class="card liquid-glass full">
+              <span class="ic violet">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              </span>
+              <span><small>{{ t().contact.address }}</small><b>{{ t().contact.addressVal }}</b></span>
             </div>
           </div>
+
+          <form class="form liquid-glass lg-card" appReveal [revealDelay]="1" (submit)="submit($event)">
+            <h3>{{ t().contact.form.title }}</h3>
+            <p class="form-sub">{{ t().contact.form.sub }}</p>
+
+            <label>
+              <span>{{ t().contact.form.name }}</span>
+              <input type="text" [value]="name()" (input)="name.set($any($event.target).value)" [placeholder]="t().contact.form.namePh" required />
+            </label>
+            <label>
+              <span>{{ t().contact.form.phone }}</span>
+              <input type="tel" [value]="phone()" (input)="phone.set($any($event.target).value)" [placeholder]="t().contact.form.phonePh" required />
+            </label>
+            <label>
+              <span>{{ t().contact.form.world }}</span>
+              <select [value]="world()" (change)="world.set($any($event.target).value)">
+                <option value="" disabled>{{ t().contact.form.worldPh }}</option>
+                @for (w of worlds; track w.id) {
+                  <option [value]="t().catalog.worlds[w.id].name">{{ t().catalog.worlds[w.id].name }}</option>
+                }
+              </select>
+            </label>
+            <label>
+              <span>{{ t().contact.form.message }}</span>
+              <textarea rows="3" [value]="message()" (input)="message.set($any($event.target).value)" [placeholder]="t().contact.form.messagePh"></textarea>
+            </label>
+
+            <button class="btn-liquid" type="submit" appRipple [disabled]="status() === 'sending'">
+              {{ status() === 'sending' ? t().contact.form.sending : t().contact.form.submit }}
+            </button>
+
+            @if (status() === 'ok') {
+              <p class="msg ok">{{ t().contact.form.success }}</p>
+            }
+            @if (status() === 'err') {
+              <p class="msg err">{{ t().contact.form.error }}</p>
+            }
+          </form>
         </div>
       </div>
     </section>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
-      .contact-section {
-        background: var(--color-bg2);
-        position: relative;
-        overflow: hidden;
-      }
-      .contact-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--color-border-strong), transparent);
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-      .section-header {
+      .head {
         text-align: center;
-        margin-bottom: 52px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
+        margin-bottom: 44px;
       }
-      .section-title {
-        font-size: clamp(2rem, 5vw, 3.2rem);
+      h2 {
+        font-size: var(--fs-h2);
         font-weight: 900;
         letter-spacing: -0.03em;
+        margin-top: 14px;
       }
-
-      .contact-grid {
+      .grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        max-width: 720px;
-        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        align-items: start;
       }
-
-      .contact-card {
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .card {
         display: flex;
         align-items: center;
-        gap: 16px;
-        padding: 24px;
+        gap: 14px;
+        padding: 18px;
+        border-radius: var(--r-md);
         text-decoration: none;
-        color: inherit;
-        cursor: pointer;
       }
-
-      .cc-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease;
+      .card.full {
+        grid-column: span 2;
       }
-      .contact-card:hover .cc-icon {
-        transform: scale(1.1) rotate(5deg);
-      }
-
-      .phone-icon {
-        background: rgba(74, 222, 128, 0.1);
-        color: #4ade80;
-        border: 1px solid rgba(74, 222, 128, 0.2);
-      }
-      .tg-icon {
-        background: rgba(79, 195, 247, 0.1);
-        color: #29b6f6;
-        border: 1px solid rgba(79, 195, 247, 0.2);
-      }
-      .email-icon {
-        background: rgba(245, 166, 35, 0.1);
-        color: var(--color-accent);
-        border: 1px solid rgba(245, 166, 35, 0.2);
-      }
-      .addr-icon {
-        background: rgba(167, 139, 250, 0.1);
-        color: #a78bfa;
-        border: 1px solid rgba(167, 139, 250, 0.2);
-      }
-
-      .cc-content {
-        flex: 1;
-        min-width: 0;
-      }
-      .cc-label {
+      .card small {
         display: block;
-        font-size: 0.72rem;
-        font-weight: 700;
         color: var(--color-text-muted);
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        margin-bottom: 4px;
+        font-size: 0.74rem;
+        margin-bottom: 2px;
       }
-      .cc-val {
-        display: block;
-        font-size: 0.93rem;
-        font-weight: 700;
+      .card b {
         color: var(--color-text);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: 0.92rem;
+        font-weight: 700;
       }
-
-      .cc-arrow {
-        color: var(--color-text-muted);
-        transition: all 0.3s ease;
-        flex-shrink: 0;
+      .ic {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border-radius: var(--r-md);
+        flex: none;
+        transition: transform var(--dur) var(--ease-spring);
       }
-      .contact-card:hover .cc-arrow {
+      .ic svg {
+        width: 22px;
+        height: 22px;
+      }
+      .card:hover .ic {
+        transform: scale(1.1) rotate(-5deg);
+      }
+      .green {
+        color: #34d399;
+        background: rgba(52, 211, 153, 0.12);
+      }
+      .blue {
+        color: var(--color-electric);
+        background: rgba(79, 195, 247, 0.12);
+      }
+      .amber {
         color: var(--color-accent);
-        transform: translate(2px, -2px);
+        background: rgba(245, 166, 35, 0.12);
       }
-
-      .address-card {
-        grid-column: 1 / -1;
+      .violet {
+        color: var(--color-aux-violet);
+        background: rgba(167, 139, 250, 0.12);
       }
-      .address-card .cc-val {
-        white-space: normal;
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
-
-      @media (max-width: 600px) {
-        .contact-grid {
+      .form h3 {
+        font-size: 1.3rem;
+        font-weight: 800;
+      }
+      .form-sub {
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        margin-top: -6px;
+        margin-bottom: 6px;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      label span {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--color-text-muted);
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: var(--r-md);
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+        color: var(--color-text);
+        font-family: inherit;
+        font-size: 0.92rem;
+        transition: all var(--dur);
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px var(--color-glow);
+      }
+      textarea {
+        resize: vertical;
+      }
+      .btn-liquid {
+        margin-top: 6px;
+        width: 100%;
+      }
+      .btn-liquid[disabled] {
+        opacity: 0.7;
+        cursor: default;
+      }
+      .msg {
+        font-size: 0.88rem;
+        font-weight: 600;
+        padding: 10px 14px;
+        border-radius: var(--r-md);
+      }
+      .msg.ok {
+        color: #34d399;
+        background: rgba(52, 211, 153, 0.1);
+      }
+      .msg.err {
+        color: #f87171;
+        background: rgba(248, 113, 113, 0.1);
+      }
+      @media (max-width: 860px) {
+        .grid {
           grid-template-columns: 1fr;
         }
-        .address-card {
-          grid-column: 1;
+      }
+      @media (max-width: 460px) {
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .card.full {
+          grid-column: span 1;
         }
       }
     `,
   ],
 })
 export class ContactComponent {
-  ts = inject(TranslationService);
+  private ts = inject(TranslationService);
+  private inquiry = inject(InquiryService);
+  t = () => this.ts.t;
+  worlds = WORLDS;
+
+  preselectWorld = input('');
+  name = signal('');
+  phone = signal('');
+  world = signal('');
+  message = signal('');
+  status = signal<'idle' | 'sending' | 'ok' | 'err'>('idle');
+
+  constructor() {
+    effect(() => {
+      const w = this.preselectWorld();
+      if (w) this.world.set(w);
+    });
+  }
+
+  async submit(e: Event) {
+    e.preventDefault();
+    if (!this.name() || !this.phone()) return;
+    this.status.set('sending');
+    const ok = await this.inquiry.send({
+      name: this.name(),
+      phone: this.phone(),
+      world: this.world(),
+      message: this.message(),
+    });
+    this.status.set(ok ? 'ok' : 'err');
+    if (ok) {
+      this.name.set('');
+      this.phone.set('');
+      this.message.set('');
+    }
+  }
 }

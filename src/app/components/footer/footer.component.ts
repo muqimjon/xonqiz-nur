@@ -1,137 +1,116 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslationService } from '../../services/translation.service';
+import { LogoComponent } from '../../shared/logo.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, LogoComponent],
   template: `
     <footer class="footer">
       <div class="divider"></div>
       <div class="container">
-        <div class="footer-inner">
-          <!-- Logo -->
-          <div class="footer-brand">
-            <a href="#home" class="footer-logo">
-              <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
-                <rect
-                  width="36"
-                  height="36"
-                  rx="10"
-                  fill="rgba(245,166,35,0.1)"
-                  stroke="rgba(245,166,35,0.2)"
-                  stroke-width="1"
-                />
-                <path d="M20 5L10 20H18L16 31L26 16H18L20 5Z" fill="#f5a623" />
-                <circle cx="11" cy="27" r="2.5" fill="#4fc3f7" opacity="0.8" />
-              </svg>
-              <div>
-                <div class="footer-logo-main">XONQIZ NUR</div>
-                <div class="footer-logo-sub">{{ ts.t.footer.tagline }}</div>
-              </div>
+        <div class="inner">
+          <div class="brand">
+            <a class="logo" [routerLink]="['/', lang()]">
+              <app-logo [size]="40" />
+              <span>
+                <span class="main">XONQIZ NUR</span>
+                <span class="sub">{{ t().footer.tagline }}</span>
+              </span>
             </a>
-            <p class="footer-tin">TIN: 309002339 | SCTEA: 47540</p>
+            <p class="tin">STIR: 309002339 &nbsp;|&nbsp; SCTEA: 47540</p>
           </div>
 
-          <!-- Links -->
-          <nav class="footer-nav">
-            <a href="#home">{{ ts.t.nav.home }}</a>
-            <a href="#products">{{ ts.t.nav.products }}</a>
-            <a href="#about">{{ ts.t.nav.about }}</a>
-            <a href="#location">{{ ts.t.nav.location }}</a>
-            <a href="#contact">{{ ts.t.nav.contact }}</a>
+          <nav class="col">
+            <span class="col-title">{{ t().footer.nav }}</span>
+            <a [routerLink]="['/', lang()]">{{ t().nav.home }}</a>
+            <a [routerLink]="['/', lang(), 'katalog']">{{ t().nav.catalog }}</a>
+            <a [routerLink]="['/', lang(), 'biz-haqimizda']">{{ t().nav.about }}</a>
+            <a [routerLink]="['/', lang(), 'aloqa']">{{ t().nav.contact }}</a>
           </nav>
 
-          <!-- Contacts mini -->
-          <div class="footer-contacts">
+          <div class="col">
+            <span class="col-title">{{ t().footer.contactTitle }}</span>
             <a href="tel:+998990600524">+998 99 060 05 24</a>
             <a href="tel:+998935137890">+998 93 513 78 90</a>
-            <a href="https://t.me/xonqiznur" target="_blank">&#64;xonqiznur</a>
+            <a href="https://t.me/xonqiznur" target="_blank" rel="noopener">&#64;xonqiznur</a>
+            <a href="mailto:raximov1990@umail.uz">raximov1990&#64;umail.uz</a>
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <span class="footer-copy"
-            >© 2021–{{ year }} "XONQIZ NUR" xususiy korxonasi. {{ ts.t.footer.rights }}.</span
-          >
-          <div class="footer-accent-line"></div>
+        <div class="bottom">
+          <span class="copy">© 2021–{{ year }} "XONQIZ NUR" xususiy korxonasi. {{ t().footer.rights }}.</span>
+          <div class="accent"></div>
         </div>
       </div>
     </footer>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .footer {
-        padding: 48px 0 32px;
+        padding: 56px 0 32px;
       }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-      .footer-inner {
+      .inner {
         display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr;
+        grid-template-columns: 1.6fr 1fr 1fr;
         gap: 40px;
-        padding-bottom: 40px;
+        padding: 40px 0;
       }
-
-      .footer-brand {
+      .brand {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 14px;
       }
-      .footer-logo {
+      .logo {
         display: flex;
         align-items: center;
         gap: 12px;
         text-decoration: none;
       }
-      .footer-logo-main {
-        font-size: 0.95rem;
+      .logo .main {
+        display: block;
         font-weight: 900;
-        color: var(--color-text);
         letter-spacing: 0.05em;
+        color: var(--color-text);
       }
-      .footer-logo-sub {
-        font-size: 0.72rem;
+      .logo .sub {
+        display: block;
+        font-size: 0.78rem;
         color: var(--color-text-muted);
-        font-weight: 500;
+        margin-top: 2px;
+        max-width: 30ch;
       }
-      .footer-tin {
-        font-size: 0.75rem;
+      .tin {
+        font-size: 0.78rem;
         color: var(--color-text-muted);
         font-family: 'Space Mono', monospace;
       }
-
-      .footer-nav {
+      .col {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
       }
-      .footer-nav a,
-      .footer-contacts a {
+      .col-title {
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-text-faint);
+        font-weight: 700;
+      }
+      .col a {
         color: var(--color-text-muted);
         text-decoration: none;
-        font-size: 0.88rem;
+        font-size: 0.9rem;
         font-weight: 500;
-        transition: color 0.2s ease;
+        transition: color var(--dur);
       }
-      .footer-nav a:hover,
-      .footer-contacts a:hover {
+      .col a:hover {
         color: var(--color-accent);
       }
-
-      .footer-contacts {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .footer-bottom {
+      .bottom {
         border-top: 1px solid var(--color-border);
         padding-top: 24px;
         display: flex;
@@ -140,33 +119,28 @@ import { TranslationService } from '../../services/translation.service';
         gap: 16px;
         flex-wrap: wrap;
       }
-      .footer-copy {
+      .copy {
         font-size: 0.78rem;
         color: var(--color-text-muted);
       }
-      .footer-accent-line {
-        height: 2px;
-        width: 48px;
+      .accent {
+        height: 3px;
+        width: 56px;
         border-radius: 2px;
-        background: linear-gradient(90deg, var(--color-accent), var(--color-electric));
+        background: var(--grad-brand);
       }
-
       @media (max-width: 700px) {
-        .footer-inner {
+        .inner {
           grid-template-columns: 1fr;
           gap: 28px;
-        }
-        .footer-nav,
-        .footer-contacts {
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 12px 20px;
         }
       }
     `,
   ],
 })
 export class FooterComponent {
-  ts = inject(TranslationService);
+  private ts = inject(TranslationService);
+  lang = this.ts.lang;
+  t = () => this.ts.t;
   year = new Date().getFullYear();
 }

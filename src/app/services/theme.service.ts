@@ -14,8 +14,14 @@ export class ThemeService {
       this._isDark.set(attr === 'dark');
       return;
     }
-    const saved = localStorage.getItem('xn-theme');
-    const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let saved: string | null = null;
+    try {
+      saved = localStorage.getItem('xn-theme');
+    } catch {}
+    const prefersDark = typeof window.matchMedia === 'function'
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+      : true;
+    const dark = saved ? saved === 'dark' : prefersDark;
     this._isDark.set(dark);
     this.apply(dark);
   }
@@ -33,7 +39,9 @@ export class ThemeService {
     } else {
       run();
     }
-    localStorage.setItem('xn-theme', next ? 'dark' : 'light');
+    try {
+      localStorage.setItem('xn-theme', next ? 'dark' : 'light');
+    } catch {}
   }
 
   private apply(dark: boolean) {
