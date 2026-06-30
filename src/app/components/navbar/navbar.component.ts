@@ -278,6 +278,8 @@ import { WORLDS } from '../../shared/catalog.config';
       .burger {
         display: none;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         gap: 4px;
       }
       .burger span {
