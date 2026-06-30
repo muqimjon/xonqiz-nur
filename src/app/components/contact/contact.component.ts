@@ -208,6 +208,10 @@ import { RippleDirective } from '../../shared/ripple.directive';
         font-size: 0.92rem;
         transition: all var(--dur);
       }
+      select option {
+        background: var(--color-bg2);
+        color: var(--color-text);
+      }
       input:focus,
       select:focus,
       textarea:focus {
