@@ -45,7 +45,7 @@ import { TranslationService } from '../../services/translation.service';
         </div>
 
         <div class="footer-bottom">
-          <span class="footer-copy">© 2024–2025 "XONQIZ NUR" xususiy korxonasi. {{ ts.t.footer.rights }}.</span>
+          <span class="footer-copy">© 2021–{{ year }} "XONQIZ NUR" xususiy korxonasi. {{ ts.t.footer.rights }}.</span>
           <div class="footer-accent-line"></div>
         </div>
       </div>
@@ -94,4 +94,5 @@ import { TranslationService } from '../../services/translation.service';
 })
 export class FooterComponent {
   ts = inject(TranslationService);
+  year = new Date().getFullYear();
 }

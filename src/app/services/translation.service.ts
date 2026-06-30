@@ -25,7 +25,7 @@ const UZ: Translations = {
     title: "Mahsulotlar", subtitle: "Keng assortiment va sifatli tovarlar",
     electric: "Elektr mahsulotlar", plumbing: "Santexnika mahsulotlar",
     electricItems: ["Lyustra va chiroqlar", "Rozetka va kalitlar", "Kabel va simlar", "Avtomatik uzgichlar", "Rubilniklar", "Elektr asbob-uskunalar", "Izolenta va qoplamalar", "Energiya hisoblagichlari"],
-    plumbingItems: ["Truba va ulagichlar", "Kran va ventillar", "Unitaz va rakovina", "Suv nasosi", "Shlang va tirkamalar", "Dush va vanna uskunalari", "Su'v filtrlari", "Qaychi va asboblar"]
+    plumbingItems: ["Truba va ulagichlar", "Kran va ventillar", "Unitaz va rakovina", "Suv nasosi", "Shlang va tirkamalar", "Dush va vanna uskunalari", "Suv filtrlari", "Qaychi va asboblar"]
   },
   about: {
     title: "Biz haqimizda", subtitle: "Xonqiz Nur — ishonchli hamkoringiz",
