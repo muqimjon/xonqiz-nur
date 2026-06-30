@@ -2,16 +2,17 @@ import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslationService } from '../../services/translation.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RevealDirective],
   template: `
     <section id="location" class="section-padding map-section">
       <div class="container">
         <!-- Header -->
-        <div class="section-header fade-up">
+        <div class="section-header" appReveal>
           <div class="badge">
             <svg width="8" height="8" viewBox="0 0 8 8">
               <circle cx="4" cy="4" r="4" fill="currentColor" />
@@ -23,7 +24,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
         <div class="map-layout">
           <!-- Info cards -->
-          <div class="map-info fade-up delay-1">
+          <div class="map-info" appReveal [revealDelay]="1">
             <div class="info-card glass-card">
               <div class="ic-icon loc-icon">
                 <svg
@@ -104,7 +105,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
           </div>
 
           <!-- Map iframe -->
-          <div class="map-frame-wrap fade-up delay-2">
+          <div class="map-frame-wrap" appReveal [revealDelay]="2">
             <div class="map-frame glass-card">
               <iframe
                 [src]="mapSrc"
