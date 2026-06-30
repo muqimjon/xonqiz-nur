@@ -13,7 +13,7 @@ import { RippleDirective } from '../../shared/ripple.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, WorldIconComponent, RevealDirective, TiltDirective, RippleDirective],
   template: `
-    <div class="bento">
+    <div class="bento" [style.--feat-span]="featureSpan">
       @for (w of worlds; track w.id; let i = $index) {
         <a
           class="cell liquid-glass lg-card"
@@ -58,7 +58,7 @@ import { RippleDirective } from '../../shared/ripple.directive';
         overflow: hidden;
       }
       .cell.feature {
-        grid-column: span 4;
+        grid-column: span var(--feat-span, 4);
         background:
           radial-gradient(circle at 80% 20%, rgba(255, 209, 102, 0.16), transparent 55%),
           var(--lg-tint);
@@ -162,5 +162,6 @@ export class WorldsBentoComponent {
   lang = this.ts.lang;
   t = () => this.ts.t;
   worlds = WORLDS;
+  featureSpan = ((WORLDS.length - 1) * 2) % 6 === 0 ? 6 : 6 - (((WORLDS.length - 1) * 2) % 6);
   world = (id: WorldId) => this.ts.t.catalog.worlds[id];
 }

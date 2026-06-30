@@ -7,7 +7,7 @@ const PATHS = [
   '/katalog',
   '/katalog/elektr',
   '/katalog/santexnika',
-  '/katalog/qurilish',
+  // '/katalog/qurilish',
   '/katalog/asboblar',
   '/katalog/dizayn',
   '/biz-haqimizda',

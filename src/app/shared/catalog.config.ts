@@ -10,7 +10,7 @@ export interface WorldMeta {
 export const WORLDS: WorldMeta[] = [
   { id: 'elektr', slug: 'elektr', accent: 'amber' },
   { id: 'santexnika', slug: 'santexnika', accent: 'electric' },
-  { id: 'qurilish', slug: 'qurilish', accent: 'amber' },
+  // { id: 'qurilish', slug: 'qurilish', accent: 'amber' },
   { id: 'asboblar', slug: 'asboblar', accent: 'electric' },
   { id: 'dizayn', slug: 'dizayn', accent: 'glow' },
 ];
