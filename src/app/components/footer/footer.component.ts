@@ -14,7 +14,7 @@ import { LogoComponent } from '../../shared/logo.component';
       <div class="container">
         <div class="inner">
           <div class="brand">
-            <a class="logo" [routerLink]="['/', lang()]">
+            <a class="logo" [routerLink]="path()">
               <app-logo [size]="40" />
               <span>
                 <span class="main">XONQIZ NUR</span>
@@ -26,10 +26,10 @@ import { LogoComponent } from '../../shared/logo.component';
 
           <nav class="col">
             <span class="col-title">{{ t().footer.nav }}</span>
-            <a [routerLink]="['/', lang()]">{{ t().nav.home }}</a>
-            <a [routerLink]="['/', lang(), 'katalog']">{{ t().nav.catalog }}</a>
-            <a [routerLink]="['/', lang(), 'biz-haqimizda']">{{ t().nav.about }}</a>
-            <a [routerLink]="['/', lang(), 'aloqa']">{{ t().nav.contact }}</a>
+            <a [routerLink]="path()">{{ t().nav.home }}</a>
+            <a [routerLink]="path('katalog')">{{ t().nav.catalog }}</a>
+            <a [routerLink]="path('biz-haqimizda')">{{ t().nav.about }}</a>
+            <a [routerLink]="path('aloqa')">{{ t().nav.contact }}</a>
           </nav>
 
           <div class="col">
@@ -141,6 +141,7 @@ import { LogoComponent } from '../../shared/logo.component';
 export class FooterComponent {
   private ts = inject(TranslationService);
   lang = this.ts.lang;
+  path = this.ts.path.bind(this.ts);
   t = () => this.ts.t;
   year = new Date().getFullYear();
 }

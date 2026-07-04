@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { TranslationService, Lang } from '../services/translation.service';
 
 export const langResolver: ResolveFn<boolean> = (route) => {
-  const lang = route.paramMap.get('lang');
+  const lang = route.data['lang'];
   if (lang === 'uz' || lang === 'ru' || lang === 'en') {
     inject(TranslationService).setLang(lang as Lang, false);
   }

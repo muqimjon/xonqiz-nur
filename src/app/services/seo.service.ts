@@ -23,7 +23,7 @@ export class SeoService {
     const e = this.ts.t.seo[key];
     const lang = this.ts.lang();
     const rest = this.restPath();
-    const canonical = `${DOMAIN}/${lang}${rest}`;
+    const canonical = `${DOMAIN}${this.base(lang)}${rest}`;
     const ogImage = `${DOMAIN}/og-image.jpg`;
 
     this.title.setTitle(e.title);
@@ -42,12 +42,17 @@ export class SeoService {
 
     this.doc.documentElement.lang = lang;
     this.setLink('canonical', canonical);
-    LANGS.forEach((l) => this.setAlternate(l, `${DOMAIN}/${l}${rest}`));
-    this.setAlternate('x-default', `${DOMAIN}/uz${rest}`);
+    LANGS.forEach((l) => this.setAlternate(l, `${DOMAIN}${this.base(l)}${rest}`));
+    this.setAlternate('x-default', `${DOMAIN}${rest}`);
+  }
+
+  private base(l: Lang): string {
+    return l === 'uz' ? '' : `/${l}`;
   }
 
   private restPath(): string {
-    const segs = this.router.url.split('?')[0].split('#')[0].split('/').filter(Boolean).slice(1);
+    const segs = this.router.url.split('?')[0].split('#')[0].split('/').filter(Boolean);
+    if (segs[0] === 'ru' || segs[0] === 'en') segs.shift();
     return segs.length ? `/${segs.join('/')}` : '';
   }
 

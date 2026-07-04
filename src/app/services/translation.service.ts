@@ -869,6 +869,10 @@ export class TranslationService {
     return this.langs[this._lang()];
   }
 
+  path(...segments: string[]): string[] {
+    return this._lang() === 'uz' ? ['/', ...segments] : ['/', this._lang(), ...segments];
+  }
+
   setLang(lang: Lang, persist = true) {
     this._lang.set(lang);
     if (persist && this.isBrowser) {

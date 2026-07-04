@@ -14,7 +14,7 @@ import { WORLDS } from '../../shared/catalog.config';
   template: `
     <header class="nav" [class.scrolled]="scrolled()">
       <div class="nav-inner liquid-glass lg-nav lg-refract">
-        <a class="brand" [routerLink]="['/', lang()]" (click)="close()">
+        <a class="brand" [routerLink]="path()" (click)="close()">
           <app-logo [size]="38" />
           <span class="brand-text">
             <span class="brand-main">XONQIZ</span>
@@ -23,14 +23,14 @@ import { WORLDS } from '../../shared/catalog.config';
         </a>
 
         <nav class="links" aria-label="Asosiy menyu">
-          <a [routerLink]="['/', lang()]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a [routerLink]="path()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             {{ t().nav.home }}
           </a>
           <div class="has-panel">
-            <a [routerLink]="['/', lang(), 'katalog']" routerLinkActive="active">{{ t().nav.catalog }}</a>
+            <a [routerLink]="path('katalog')" routerLinkActive="active">{{ t().nav.catalog }}</a>
             <div class="panel liquid-glass">
               @for (w of worlds; track w.id) {
-                <a class="panel-item" [routerLink]="['/', lang(), 'katalog', w.slug]" [attr.data-accent]="w.accent">
+                <a class="panel-item" [routerLink]="path('katalog', w.slug)" [attr.data-accent]="w.accent">
                   <span class="pi-icon"><app-world-icon [world]="w.id" [size]="22" /></span>
                   <span>
                     <span class="pi-name">{{ t().catalog.worlds[w.id].name }}</span>
@@ -40,8 +40,8 @@ import { WORLDS } from '../../shared/catalog.config';
               }
             </div>
           </div>
-          <a [routerLink]="['/', lang(), 'biz-haqimizda']" routerLinkActive="active">{{ t().nav.about }}</a>
-          <a [routerLink]="['/', lang(), 'aloqa']" routerLinkActive="active">{{ t().nav.contact }}</a>
+          <a [routerLink]="path('biz-haqimizda')" routerLinkActive="active">{{ t().nav.about }}</a>
+          <a [routerLink]="path('aloqa')" routerLinkActive="active">{{ t().nav.contact }}</a>
         </nav>
 
         <div class="controls">
@@ -70,15 +70,15 @@ import { WORLDS } from '../../shared/catalog.config';
 
       @if (menuOpen()) {
         <div class="mobile liquid-glass lg-modal">
-          <a [routerLink]="['/', lang()]" (click)="close()">{{ t().nav.home }}</a>
-          <a [routerLink]="['/', lang(), 'katalog']" (click)="close()">{{ t().nav.catalog }}</a>
+          <a [routerLink]="path()" (click)="close()">{{ t().nav.home }}</a>
+          <a [routerLink]="path('katalog')" (click)="close()">{{ t().nav.catalog }}</a>
           @for (w of worlds; track w.id) {
-            <a class="m-sub" [routerLink]="['/', lang(), 'katalog', w.slug]" (click)="close()">
+            <a class="m-sub" [routerLink]="path('katalog', w.slug)" (click)="close()">
               <app-world-icon [world]="w.id" [size]="18" /> {{ t().catalog.worlds[w.id].name }}
             </a>
           }
-          <a [routerLink]="['/', lang(), 'biz-haqimizda']" (click)="close()">{{ t().nav.about }}</a>
-          <a [routerLink]="['/', lang(), 'aloqa']" (click)="close()">{{ t().nav.contact }}</a>
+          <a [routerLink]="path('biz-haqimizda')" (click)="close()">{{ t().nav.about }}</a>
+          <a [routerLink]="path('aloqa')" (click)="close()">{{ t().nav.contact }}</a>
         </div>
       }
     </header>
@@ -343,6 +343,7 @@ export class NavbarComponent {
   langList: Lang[] = ['uz', 'ru', 'en'];
 
   lang = this.ts.lang;
+  path = this.ts.path.bind(this.ts);
   t = () => this.ts.t;
 
   constructor() {
@@ -362,8 +363,8 @@ export class NavbarComponent {
   switchLang(l: Lang) {
     this.ts.setLang(l);
     const segs = this.router.url.split('?')[0].split('/').filter(Boolean);
-    segs[0] = l;
-    this.router.navigate(['/', ...segs]);
+    if (segs[0] === 'ru' || segs[0] === 'en') segs.shift();
+    this.router.navigate(l === 'uz' ? ['/', ...segs] : ['/', l, ...segs]);
     this.close();
   }
 }

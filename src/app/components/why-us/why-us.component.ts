@@ -50,7 +50,7 @@ import { TiltDirective } from '../../shared/tilt.directive';
           }
         </div>
         <div class="cta-row" appReveal>
-          <a class="btn-glass" [routerLink]="['/', lang(), 'aloqa']">
+          <a class="btn-glass" [routerLink]="path('aloqa')">
             {{ t().whyUs.inlineCta }}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M13 6l6 6-6 6" />
@@ -129,5 +129,6 @@ import { TiltDirective } from '../../shared/tilt.directive';
 export class WhyUsComponent {
   private ts = inject(TranslationService);
   lang = this.ts.lang;
+  path = this.ts.path.bind(this.ts);
   t = () => this.ts.t;
 }

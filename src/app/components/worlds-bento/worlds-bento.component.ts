@@ -19,7 +19,7 @@ import { RippleDirective } from '../../shared/ripple.directive';
           class="cell liquid-glass lg-card"
           [class.feature]="w.id === 'dizayn'"
           [attr.data-accent]="w.accent"
-          [routerLink]="['/', lang(), 'katalog', w.slug]"
+          [routerLink]="path('katalog', w.slug)"
           appReveal
           [revealDelay]="i"
           appTilt
@@ -160,6 +160,7 @@ import { RippleDirective } from '../../shared/ripple.directive';
 export class WorldsBentoComponent {
   private ts = inject(TranslationService);
   lang = this.ts.lang;
+  path = this.ts.path.bind(this.ts);
   t = () => this.ts.t;
   worlds = WORLDS;
   featureSpan = ((WORLDS.length - 1) * 2) % 6 === 0 ? 6 : 6 - (((WORLDS.length - 1) * 2) % 6);

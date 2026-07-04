@@ -43,7 +43,7 @@ import { LightningComponent } from '../../shared/lightning.component';
             }
           </div>
           <div class="cta">
-            <a class="btn-liquid" appMagnetic [routerLink]="['/', lang(), 'katalog', 'dizayn']">{{ t().spotlight.cta }}</a>
+            <a class="btn-liquid" appMagnetic [routerLink]="path('katalog', 'dizayn')">{{ t().spotlight.cta }}</a>
             <a class="btn-glass" href="https://t.me/xonqiznur" target="_blank" rel="noopener">{{ t().spotlight.cta2 }}</a>
           </div>
         </div>
@@ -178,6 +178,7 @@ import { LightningComponent } from '../../shared/lightning.component';
 export class SpotlightComponent {
   private ts = inject(TranslationService);
   lang = this.ts.lang;
+  path = this.ts.path.bind(this.ts);
   t = () => this.ts.t;
   bulbs = [
     { x: 60, y: 178, d: 0 },

@@ -13,8 +13,8 @@ import { TranslationService } from '../../services/translation.service';
         <span class="code grad-text">404</span>
         <p>Sahifa topilmadi</p>
         <div class="btns">
-          <a class="btn-liquid" [routerLink]="['/', lang()]">{{ t().nav.home }}</a>
-          <a class="btn-glass" [routerLink]="['/', lang(), 'katalog']">{{ t().nav.catalog }}</a>
+          <a class="btn-liquid" [routerLink]="path()">{{ t().nav.home }}</a>
+          <a class="btn-glass" [routerLink]="path('katalog')">{{ t().nav.catalog }}</a>
         </div>
       </div>
     </section>
@@ -54,5 +54,6 @@ import { TranslationService } from '../../services/translation.service';
 export class NotFoundPage {
   private ts = inject(TranslationService);
   lang = this.ts.lang;
+  path = this.ts.path.bind(this.ts);
   t = () => this.ts.t;
 }

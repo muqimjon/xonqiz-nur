@@ -14,12 +14,14 @@ const PATHS = [
   '/aloqa',
 ];
 
+const base = (l) => (l === 'uz' ? '' : `/${l}`);
+
 const urls = [];
 for (const p of PATHS) {
   for (const lang of LANGS) {
-    const alts = LANGS.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${DOMAIN}/${l}${p}"/>`).join('\n');
+    const alts = LANGS.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${DOMAIN}${base(l)}${p}"/>`).join('\n');
     urls.push(
-      `  <url>\n    <loc>${DOMAIN}/${lang}${p}</loc>\n${alts}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}/uz${p}"/>\n  </url>`,
+      `  <url>\n    <loc>${DOMAIN}${base(lang)}${p}</loc>\n${alts}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${p}"/>\n  </url>`,
     );
   }
 }

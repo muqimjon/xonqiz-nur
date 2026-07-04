@@ -36,13 +36,13 @@ import { MagneticDirective } from '../../shared/magnetic.directive';
           </h1>
           <p class="desc">{{ t().hero.desc }}</p>
           <div class="cta">
-            <a class="btn-liquid" appMagnetic [routerLink]="['/', lang(), 'aloqa']">
+            <a class="btn-liquid" appMagnetic [routerLink]="path('aloqa')">
               {{ t().hero.cta }}
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </a>
-            <a class="btn-glass" [routerLink]="['/', lang(), 'katalog']">{{ t().hero.ctaSecondary }}</a>
+            <a class="btn-glass" [routerLink]="path('katalog')">{{ t().hero.ctaSecondary }}</a>
           </div>
 
           <div class="stats liquid-glass">
@@ -250,5 +250,6 @@ import { MagneticDirective } from '../../shared/magnetic.directive';
 export class HeroComponent {
   private ts = inject(TranslationService);
   lang = this.ts.lang;
+  path = this.ts.path.bind(this.ts);
   t = () => this.ts.t;
 }

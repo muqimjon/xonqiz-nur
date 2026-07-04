@@ -25,7 +25,7 @@ import { LogoComponent } from '../../shared/logo.component';
             <div class="row"><span>{{ t().about.regLabel }}</span><b>{{ t().about.regDate }}</b></div>
           </div>
           @if (showCta()) {
-            <a class="btn-glass cta" [routerLink]="['/', lang(), 'biz-haqimizda']">{{ t().about.cta }}</a>
+            <a class="btn-glass cta" [routerLink]="path('biz-haqimizda')">{{ t().about.cta }}</a>
           }
         </div>
 
@@ -144,6 +144,7 @@ import { LogoComponent } from '../../shared/logo.component';
 export class AboutComponent {
   private ts = inject(TranslationService);
   lang = this.ts.lang;
+  path = this.ts.path.bind(this.ts);
   t = () => this.ts.t;
   showCta = input(true);
 }

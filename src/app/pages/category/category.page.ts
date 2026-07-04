@@ -17,7 +17,7 @@ import { RippleDirective } from '../../shared/ripple.directive';
     @if (meta(); as m) {
       <section class="section-padding page-top" [attr.data-accent]="m.accent">
         <div class="container">
-          <a class="back" [routerLink]="['/', lang(), 'katalog']">
+          <a class="back" [routerLink]="path('katalog')">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" /></svg>
             {{ t().catalog.backToCatalog }}
           </a>
@@ -27,7 +27,7 @@ import { RippleDirective } from '../../shared/ripple.directive';
               <h1>{{ data().name }}</h1>
               <p class="sub">{{ data().blurb }}</p>
             </div>
-            <a class="btn-liquid ask" [routerLink]="['/', lang(), 'aloqa']" [queryParams]="{ yonalish: data().name }">
+            <a class="btn-liquid ask" [routerLink]="path('aloqa')" [queryParams]="{ yonalish: data().name }">
               {{ t().catalog.askCta }}
             </a>
           </header>
@@ -187,6 +187,7 @@ export class CategoryPage {
   private seo = inject(SeoService);
   private router = inject(Router);
   lang = this.ts.lang;
+  path = this.ts.path.bind(this.ts);
   t = () => this.ts.t;
 
   world = input('');
@@ -200,7 +201,7 @@ export class CategoryPage {
     effect(() => {
       const m = this.meta();
       if (this.world() && !m) {
-        this.router.navigate(['/', this.lang(), 'katalog']);
+        this.router.navigate(this.path('katalog'));
       } else if (m) {
         this.seo.apply(m.id);
       }
