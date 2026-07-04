@@ -1,13 +1,6 @@
-/// <reference types="node" />
-
-interface VercelRequest {
-  method?: string;
-  body?: unknown;
-}
-
-interface VercelResponse {
-  status(code: number): VercelResponse;
-  json(data: unknown): void;
+interface Env {
+  TELEGRAM_BOT_TOKEN: string;
+  TELEGRAM_CHAT_ID: string;
 }
 
 interface Inquiry {
@@ -23,21 +16,17 @@ const clip = (v: unknown, n: number) =>
     .trim()
     .slice(0, n);
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    res.status(405).json({ ok: false });
-    return;
-  }
+export const onRequestPost = async (context: {
+  request: Request;
+  env: Env;
+}): Promise<Response> => {
+  const { request, env } = context;
 
   let data: Inquiry = {};
-  if (req.body && typeof req.body === 'object') {
-    data = req.body as Inquiry;
-  } else if (typeof req.body === 'string') {
-    try {
-      data = JSON.parse(req.body) as Inquiry;
-    } catch {
-      data = {};
-    }
+  try {
+    data = (await request.json()) as Inquiry;
+  } catch {
+    data = {};
   }
 
   const name = clip(data.name, 80);
@@ -45,15 +34,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const world = clip(data.world, 60);
   const message = clip(data.message, 1500);
   if (!name || !phone) {
-    res.status(422).json({ ok: false });
-    return;
+    return Response.json({ ok: false }, { status: 422 });
   }
 
-  const token = process.env['TELEGRAM_BOT_TOKEN'];
-  const chatId = process.env['TELEGRAM_CHAT_ID'];
+  const token = env.TELEGRAM_BOT_TOKEN;
+  const chatId = env.TELEGRAM_CHAT_ID;
   if (!token || !chatId) {
-    res.status(500).json({ ok: false });
-    return;
+    return Response.json({ ok: false }, { status: 500 });
   }
 
   const text =
@@ -69,5 +56,5 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     body: JSON.stringify({ chat_id: chatId, text, disable_web_page_preview: true }),
   });
 
-  res.status(tg.ok ? 200 : 502).json({ ok: tg.ok });
-}
+  return Response.json({ ok: tg.ok }, { status: tg.ok ? 200 : 502 });
+};
