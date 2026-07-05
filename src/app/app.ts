@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FloatingContactComponent } from './components/floating-contact/floating-contact.component';
 import { PromoModalComponent } from './components/promo-modal/promo-modal.component';
 import { ThemeService } from './services/theme.service';
+import { AnalyticsService } from './services/analytics.service';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +43,9 @@ import { ThemeService } from './services/theme.service';
 })
 export class App {
   private theme = inject(ThemeService);
+  private analytics = inject(AnalyticsService);
   constructor() {
     this.theme.init();
+    this.analytics.init();
   }
 }
