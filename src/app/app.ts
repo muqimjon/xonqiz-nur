@@ -4,19 +4,28 @@ import { FilterDefsComponent } from './shared/filter-defs.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FloatingContactComponent } from './components/floating-contact/floating-contact.component';
+import { PromoModalComponent } from './components/promo-modal/promo-modal.component';
 import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, FilterDefsComponent, NavbarComponent, FooterComponent, FloatingContactComponent],
+  imports: [
+    RouterOutlet,
+    FilterDefsComponent,
+    NavbarComponent,
+    FooterComponent,
+    FloatingContactComponent,
+    PromoModalComponent,
+  ],
   template: `
     <app-filter-defs />
     <app-navbar />
     <main><router-outlet /></main>
     <app-floating-contact />
     <app-footer />
+    <app-promo-modal />
   `,
   styles: [
     `

@@ -116,6 +116,7 @@ export interface Translations {
   faq: { title: string; subtitle: string; items: QA[] };
   footer: { tagline: string; rights: string; nav: string; contactTitle: string };
   floating: { call: string; telegram: string };
+  promo: { badge: string; title: string; body: string; cta: string; later: string };
   seo: Record<'home' | 'catalog' | WorldId | 'about' | 'contact', SeoEntry>;
 }
 
@@ -325,6 +326,13 @@ const UZ: Translations = {
     contactTitle: 'Aloqa',
   },
   floating: { call: "Qo'ng'iroq qilish", telegram: 'Telegram orqali yozish' },
+  promo: {
+    badge: 'Taklif',
+    title: 'Bu sayt yoqdimi?',
+    body: "xonqiz.uz domeni sotuvda. Shuningdek, biznesingizga mos, aynan shunday zamonaviy va tez sayt tayyorlab beramiz. Batafsil ma'lumot uchun yozing — jon deb yordam beramiz.",
+    cta: "Telegram'da bog'lanish",
+    later: 'Keyinroq',
+  },
   seo: {
     home: {
       title: "Elektr, santexnika va asbob mollari Farg'ona | Xonqiz Nur",
@@ -571,6 +579,13 @@ const RU: Translations = {
     contactTitle: 'Контакты',
   },
   floating: { call: 'Позвонить', telegram: 'Написать в Telegram' },
+  promo: {
+    badge: 'Предложение',
+    title: 'Понравился сайт?',
+    body: 'Домен xonqiz.uz продаётся. Также сделаем такой же современный и быстрый сайт под ваш бизнес. Напишите за подробностями — будем рады помочь.',
+    cta: 'Написать в Telegram',
+    later: 'Позже',
+  },
   seo: {
     home: {
       title: 'Электрика, сантехника и инструмент Фергана | Xonqiz Nur',
@@ -817,6 +832,13 @@ const EN: Translations = {
     contactTitle: 'Contact',
   },
   floating: { call: 'Call', telegram: 'Message on Telegram' },
+  promo: {
+    badge: 'Offer',
+    title: 'Like this website?',
+    body: 'The domain xonqiz.uz is for sale. We can also build a modern, fast site like this tailored to your business. Message us for details — happy to help.',
+    cta: 'Message on Telegram',
+    later: 'Later',
+  },
   seo: {
     home: {
       title: 'Electrical, Plumbing & Tools Supplies Fergana | Xonqiz Nur',
