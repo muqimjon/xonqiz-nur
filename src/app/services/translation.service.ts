@@ -327,40 +327,40 @@ const UZ: Translations = {
   floating: { call: "Qo'ng'iroq qilish", telegram: 'Telegram orqali yozish' },
   seo: {
     home: {
-      title: "Xonqiz Nur — Elektr, santexnika, asbob va dizayn mollari | Farg'ona",
-      description: "Xonqiz qishlog'idagi elektr, santexnika, asbob-uskuna va dizayner chiroqlar do'koni. 500+ mahsulot turi. Optom va chakana. Tel +998 99 060 05 24.",
+      title: "Elektr, santexnika va asbob mollari Farg'ona | Xonqiz Nur",
+      description: "Farg'ona, Xonqiz qishlog'idagi elektr, santexnika, asbob-uskuna va dizayner chiroqlar do'koni. 500+ mahsulot, optom va chakana narxlar. Tel +998 99 060 05 24.",
     },
     catalog: {
-      title: 'Katalog — Elektr, santexnika, asbob va chiroqlar | Xonqiz Nur',
-      description: "4 yo'nalish, 500+ mahsulot turi. Optom narxlar uchun bog'laning. Xonqiz Nur, Farg'ona.",
+      title: "Katalog — elektr, santexnika, asbob va chiroqlar | Xonqiz Nur",
+      description: "Farg'onada elektr, santexnika, asbob-uskuna va dizayner chiroqlar katalogi. 500+ mahsulot turi. Optom narxlar uchun bog'laning.",
     },
     elektr: {
-      title: 'Elektr mahsulotlari — lyustra, kabel, avtomat | Xonqiz Nur',
-      description: "Lyustra, rozetka, kabel, avtomat uzgichlar va boshqa elektr mollari. Optom va chakana, Farg'ona.",
+      title: "Elektr mollari Farg'ona — lyustra, kabel, avtomat | Xonqiz Nur",
+      description: "Farg'onada elektr mollari: lyustra, rozetka, kalit, kabel, avtomat uzgichlar. Optom va chakana narxlar. Xonqiz Nur.",
     },
     santexnika: {
-      title: 'Santexnika — truba, kran, nasos, filtr | Xonqiz Nur',
-      description: "Truba, kran, unitaz, suv nasosi va filtrlari. Sifatli santexnika, Farg'ona.",
+      title: "Santexnika Farg'ona — truba, kran, nasos, filtr | Xonqiz Nur",
+      description: "Farg'onada santexnika mollari: truba, kran, unitaz, rakovina, suv nasosi va filtrlari. Optom va chakana narxlar. Xonqiz Nur.",
     },
     qurilish: {
       title: "Qurilish materiallari — sement, gips, bo'yoq | Xonqiz Nur",
       description: "Sement, gipskarton, bo'yoq, quruq aralashma va izolyatsiya. Ob'yektlar uchun optom.",
     },
     asboblar: {
-      title: "Asbob-uskunalar — drel, payvand, o'lchov | Xonqiz Nur",
-      description: "Drel, perforator, bolgarka, payvand va qo'l asboblari. Professional asboblar, Farg'ona.",
+      title: "Asbob-uskunalar Farg'ona — drel, bolgarka, payvand | Xonqiz Nur",
+      description: "Farg'onada asbob-uskunalar: drel, perforator, bolgarka, payvand apparati va qo'l asboblari. Professional va uy ustasi uchun.",
     },
     dizayn: {
-      title: 'Noyob dizaynli chiroqlar — lyustra, Edison, smart LED | Xonqiz Nur',
-      description: 'Dizayner lyustralar, vintage Edison lampalar, bra va aqlli LED yoritish. Noyob yorugʻlik yechimlari.',
+      title: "Dizaynli chiroqlar Farg'ona — lyustra, Edison, LED | Xonqiz Nur",
+      description: "Farg'onada noyob dizayner lyustralar, vintage Edison lampalar, bra va aqlli LED yoritish. Dizaynli yorug'lik yechimlari.",
     },
     about: {
-      title: 'Biz haqimizda — 2021 yildan beri | Xonqiz Nur',
-      description: "\"XONQIZ NUR\" xususiy korxonasi — 2021 yildan Farg'onada ishonchli ta'minotchi. STIR 309002339.",
+      title: "Biz haqimizda — 2021 yildan Farg'onada | Xonqiz Nur",
+      description: "\"XONQIZ NUR\" xususiy korxonasi — 2021 yildan Farg'ona, Xonqiz qishlog'ida ishonchli elektr va santexnika mollari ta'minotchisi. STIR 309002339.",
     },
     contact: {
-      title: 'Aloqa — telefon, Telegram, manzil | Xonqiz Nur',
-      description: "Xonqiz qishlog'i, Farg'ona tumani. Tel +998 99 060 05 24, +998 93 513 78 90. Telegram @xonqiznur.",
+      title: "Aloqa — telefon, Telegram, manzil | Xonqiz Nur, Farg'ona",
+      description: "Xonqiz qishlog'i, Farg'ona tumani. Tel +998 99 060 05 24, +998 93 513 78 90. Telegram @xonqiznur. Optom narxlar uchun yozing.",
     },
   },
 };
@@ -573,40 +573,40 @@ const RU: Translations = {
   floating: { call: 'Позвонить', telegram: 'Написать в Telegram' },
   seo: {
     home: {
-      title: 'Xonqiz Nur — электрика, сантехника, инструмент и дизайн | Фергана',
-      description: 'Магазин электрики, сантехники, инструмента и дизайнерских светильников в сел. Хонкиз. 500+ видов товаров. Опт и розница. Тел +998 99 060 05 24.',
+      title: 'Электрика, сантехника и инструмент Фергана | Xonqiz Nur',
+      description: 'Магазин электрики, сантехники, инструмента и дизайнерских светильников в сел. Хонкиз, Фергана. 500+ товаров, опт и розница. Тел +998 99 060 05 24.',
     },
     catalog: {
-      title: 'Каталог — электрика, сантехника, инструмент и свет | Xonqiz Nur',
-      description: '4 направления, 500+ видов товаров. Свяжитесь для оптовых цен. Xonqiz Nur, Фергана.',
+      title: 'Каталог — электрика, сантехника, инструмент, свет | Xonqiz Nur',
+      description: 'Каталог электрики, сантехники, инструмента и дизайнерского света в Фергане. 500+ видов товаров. Свяжитесь для оптовых цен.',
     },
     elektr: {
-      title: 'Электротовары — люстры, кабель, автоматы | Xonqiz Nur',
-      description: 'Люстры, розетки, кабель, автоматы и другие электротовары. Опт и розница, Фергана.',
+      title: 'Электротовары Фергана — люстры, кабель, автоматы | Xonqiz Nur',
+      description: 'Электротовары в Фергане: люстры, розетки, выключатели, кабель, автоматы. Опт и розница. Xonqiz Nur.',
     },
     santexnika: {
-      title: 'Сантехника — трубы, краны, насос, фильтр | Xonqiz Nur',
-      description: 'Трубы, краны, унитазы, насосы и фильтры воды. Качественная сантехника, Фергана.',
+      title: 'Сантехника Фергана — трубы, краны, насос, фильтр | Xonqiz Nur',
+      description: 'Сантехника в Фергане: трубы, краны, унитазы, раковины, насосы и фильтры воды. Опт и розница. Xonqiz Nur.',
     },
     qurilish: {
       title: 'Стройматериалы — цемент, гипс, краска | Xonqiz Nur',
       description: 'Цемент, гипсокартон, краска, сухие смеси и изоляция. Опт для объектов.',
     },
     asboblar: {
-      title: 'Инструменты — дрель, сварка, измерение | Xonqiz Nur',
-      description: 'Дрели, перфораторы, болгарки, сварка и ручной инструмент. Профессиональный инструмент, Фергана.',
+      title: 'Инструменты Фергана — дрель, болгарка, сварка | Xonqiz Nur',
+      description: 'Инструменты в Фергане: дрели, перфораторы, болгарки, сварка и ручной инструмент. Для профи и дома. Xonqiz Nur.',
     },
     dizayn: {
-      title: 'Дизайнерские светильники — люстры, Эдисон, smart LED | Xonqiz Nur',
-      description: 'Дизайнерские люстры, винтажные лампы Эдисона, бра и умный LED-свет. Уникальные решения освещения.',
+      title: 'Дизайнерские светильники Фергана — люстры, Эдисон, LED | Xonqiz Nur',
+      description: 'Дизайнерские люстры, винтажные лампы Эдисона, бра и умный LED-свет. Уникальное освещение в Фергане. Xonqiz Nur.',
     },
     about: {
-      title: 'О нас — с 2021 года | Xonqiz Nur',
-      description: 'ЧП «XONQIZ NUR» — надёжный поставщик в Фергане с 2021 года. ИНН 309002339.',
+      title: 'О нас — в Фергане с 2021 года | Xonqiz Nur',
+      description: 'ЧП «XONQIZ NUR» — надёжный поставщик электрики и сантехники в Фергане с 2021 года. ИНН 309002339.',
     },
     contact: {
-      title: 'Контакты — телефон, Telegram, адрес | Xonqiz Nur',
-      description: 'сел. Хонкиз, Ферганский район. Тел +998 99 060 05 24, +998 93 513 78 90. Telegram @xonqiznur.',
+      title: 'Контакты — телефон, Telegram, адрес | Xonqiz Nur, Фергана',
+      description: 'сел. Хонкиз, Ферганский район. Тел +998 99 060 05 24, +998 93 513 78 90. Telegram @xonqiznur. Пишите для оптовых цен.',
     },
   },
 };
@@ -819,40 +819,40 @@ const EN: Translations = {
   floating: { call: 'Call', telegram: 'Message on Telegram' },
   seo: {
     home: {
-      title: 'Xonqiz Nur — Electrical, Plumbing & Tools Supplies | Fergana',
-      description: 'Store for electrical, plumbing, tools and designer lighting in Xonqiz village. 500+ product types. Wholesale & retail. Tel +998 99 060 05 24.',
+      title: 'Electrical, Plumbing & Tools Supplies Fergana | Xonqiz Nur',
+      description: 'Store for electrical, plumbing, tools and designer lighting in Xonqiz village, Fergana. 500+ products, wholesale & retail. Tel +998 99 060 05 24.',
     },
     catalog: {
       title: 'Catalog — Electrical, Plumbing, Tools & Lighting | Xonqiz Nur',
-      description: '4 worlds, 500+ product types. Contact us for bulk pricing. Xonqiz Nur, Fergana.',
+      description: 'Catalog of electrical, plumbing, tools and designer lighting in Fergana. 500+ product types. Contact us for wholesale prices.',
     },
     elektr: {
-      title: 'Electrical products — chandeliers, cable, breakers | Xonqiz Nur',
-      description: 'Chandeliers, sockets, cable, circuit breakers and more. Wholesale & retail, Fergana.',
+      title: 'Electrical Supplies Fergana — cable, chandeliers, breakers | Xonqiz Nur',
+      description: 'Electrical goods in Fergana: chandeliers, sockets, switches, cable, circuit breakers. Wholesale & retail. Xonqiz Nur.',
     },
     santexnika: {
-      title: 'Plumbing — pipes, faucets, pumps, filters | Xonqiz Nur',
-      description: 'Pipes, faucets, toilets, water pumps and filters. Quality plumbing, Fergana.',
+      title: 'Plumbing Fergana — pipes, faucets, pumps, filters | Xonqiz Nur',
+      description: 'Plumbing in Fergana: pipes, faucets, toilets, sinks, water pumps and filters. Wholesale & retail. Xonqiz Nur.',
     },
     qurilish: {
       title: 'Construction materials — cement, gypsum, paint | Xonqiz Nur',
       description: 'Cement, drywall, paint, dry mixes and insulation. Wholesale for sites.',
     },
     asboblar: {
-      title: 'Tools & equipment — drills, welding, measuring | Xonqiz Nur',
-      description: 'Drills, rotary hammers, grinders, welding and hand tools. Professional tools, Fergana.',
+      title: 'Tools & Equipment Fergana — drills, grinders, welding | Xonqiz Nur',
+      description: 'Tools in Fergana: drills, rotary hammers, grinders, welding and hand tools. For pros and home. Xonqiz Nur.',
     },
     dizayn: {
-      title: 'Designer lighting — chandeliers, Edison, smart LED | Xonqiz Nur',
-      description: 'Designer chandeliers, vintage Edison bulbs, sconces and smart LED lighting. Unique lighting solutions.',
+      title: 'Designer Lighting Fergana — chandeliers, Edison, LED | Xonqiz Nur',
+      description: 'Designer chandeliers, vintage Edison bulbs, sconces and smart LED lighting. Unique lighting in Fergana. Xonqiz Nur.',
     },
     about: {
-      title: 'About — since 2021 | Xonqiz Nur',
-      description: '"XONQIZ NUR" private enterprise — a reliable supplier in Fergana since 2021. TIN 309002339.',
+      title: 'About — a Fergana supplier since 2021 | Xonqiz Nur',
+      description: '"XONQIZ NUR" private enterprise — a reliable electrical & plumbing supplier in Fergana since 2021. TIN 309002339.',
     },
     contact: {
-      title: 'Contact — phone, Telegram, address | Xonqiz Nur',
-      description: 'Xonqiz village, Fergana district. Tel +998 99 060 05 24, +998 93 513 78 90. Telegram @xonqiznur.',
+      title: 'Contact — phone, Telegram, address | Xonqiz Nur, Fergana',
+      description: 'Xonqiz village, Fergana district. Tel +998 99 060 05 24, +998 93 513 78 90. Telegram @xonqiznur. Message us for wholesale prices.',
     },
   },
 };
