@@ -114,7 +114,7 @@ export interface Translations {
     };
   };
   faq: { title: string; subtitle: string; items: QA[] };
-  footer: { tagline: string; rights: string; nav: string; contactTitle: string };
+  footer: { tagline: string; rights: string; nav: string; contactTitle: string; dev: string };
   floating: { call: string; telegram: string };
   promo: { badge: string; title: string; body: string; cta: string; later: string };
   seo: Record<'home' | 'catalog' | WorldId | 'about' | 'contact', SeoEntry>;
@@ -324,12 +324,13 @@ const UZ: Translations = {
     rights: 'Barcha huquqlar himoyalangan',
     nav: 'Sahifalar',
     contactTitle: 'Aloqa',
+    dev: "Sayt va domen bo'yicha: Muqimjon Mamadaliyev",
   },
   floating: { call: "Qo'ng'iroq qilish", telegram: 'Telegram orqali yozish' },
   promo: {
     badge: 'Taklif',
-    title: 'Bu sayt yoqdimi?',
-    body: "xonqiz.uz domeni sotuvda. Shuningdek, biznesingizga mos, aynan shunday zamonaviy va tez sayt tayyorlab beramiz. Batafsil ma'lumot uchun yozing — jon deb yordam beramiz.",
+    title: 'Bu domen sotuvda',
+    body: "Biznesingizga mos, aynan shunday zamonaviy va tez sayt ham tayyorlab beramiz. Bog'lanish uchun yozing.",
     cta: "Telegram'da bog'lanish",
     later: 'Keyinroq',
   },
@@ -577,12 +578,13 @@ const RU: Translations = {
     rights: 'Все права защищены',
     nav: 'Страницы',
     contactTitle: 'Контакты',
+    dev: 'Сайт и домен: Muqimjon Mamadaliyev',
   },
   floating: { call: 'Позвонить', telegram: 'Написать в Telegram' },
   promo: {
     badge: 'Предложение',
-    title: 'Понравился сайт?',
-    body: 'Домен xonqiz.uz продаётся. Также сделаем такой же современный и быстрый сайт под ваш бизнес. Напишите за подробностями — будем рады помочь.',
+    title: 'Этот домен продаётся',
+    body: 'Также сделаем такой же современный и быстрый сайт под ваш бизнес. Напишите, чтобы связаться.',
     cta: 'Написать в Telegram',
     later: 'Позже',
   },
@@ -830,12 +832,13 @@ const EN: Translations = {
     rights: 'All rights reserved',
     nav: 'Pages',
     contactTitle: 'Contact',
+    dev: 'Site & domain: Muqimjon Mamadaliyev',
   },
   floating: { call: 'Call', telegram: 'Message on Telegram' },
   promo: {
     badge: 'Offer',
-    title: 'Like this website?',
-    body: 'The domain xonqiz.uz is for sale. We can also build a modern, fast site like this tailored to your business. Message us for details — happy to help.',
+    title: 'This domain is for sale',
+    body: 'We can also build a modern, fast website like this tailored to your business. Message us to get in touch.',
     cta: 'Message on Telegram',
     later: 'Later',
   },

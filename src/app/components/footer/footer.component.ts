@@ -43,6 +43,14 @@ import { LogoComponent } from '../../shared/logo.component';
 
         <div class="bottom">
           <span class="copy">© 2021–{{ year }} "XONQIZ NUR" xususiy korxonasi. {{ t().footer.rights }}.</span>
+          <a class="dev" href="https://t.me/MuqimjonMamadaliyev" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M21.9 4.3 18.6 19.9c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6 12.1l-4.7-1.5c-1-.3-1-1 .2-1.5l18.4-7.1c.8-.3 1.6.2 1.3 1.4z"
+              />
+            </svg>
+            {{ t().footer.dev }}
+          </a>
           <div class="accent"></div>
         </div>
       </div>
@@ -122,6 +130,22 @@ import { LogoComponent } from '../../shared/logo.component';
       .copy {
         font-size: 0.78rem;
         color: var(--color-text-muted);
+      }
+      .dev {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.78rem;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        transition: color var(--dur);
+      }
+      .dev:hover {
+        color: var(--color-accent);
+      }
+      .dev svg {
+        flex-shrink: 0;
+        opacity: 0.75;
       }
       .accent {
         height: 3px;

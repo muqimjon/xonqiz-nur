@@ -15,6 +15,7 @@ import { TranslationService } from '../../services/translation.service';
             </svg>
           </button>
           <span class="promo-badge">{{ t().promo.badge }}</span>
+          <div class="promo-domain">xonqiz.uz</div>
           <h2>{{ t().promo.title }}</h2>
           <p>{{ t().promo.body }}</p>
           <a class="btn-liquid promo-cta" href="https://t.me/MuqimjonMamadaliyev" target="_blank" rel="noopener">
@@ -77,7 +78,7 @@ import { TranslationService } from '../../services/translation.service';
       }
       .promo-badge {
         display: inline-block;
-        margin-bottom: 16px;
+        margin-bottom: 18px;
         padding: 5px 14px;
         font-size: 0.72rem;
         font-weight: 700;
@@ -87,10 +88,22 @@ import { TranslationService } from '../../services/translation.service';
         background: color-mix(in srgb, var(--color-accent) 14%, transparent);
         border-radius: var(--r-pill);
       }
-      .promo-card h2 {
-        margin: 0 0 12px;
-        font-size: 1.5rem;
+      .promo-domain {
+        margin: 0 0 14px;
+        font-size: clamp(2.1rem, 9vw, 2.7rem);
         font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        background: var(--grad-brand);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
+      .promo-card h2 {
+        margin: 0 0 10px;
+        font-size: 1.18rem;
+        font-weight: 800;
         color: var(--color-text);
       }
       .promo-card p {
